@@ -8,7 +8,7 @@ export const videos = [
     _id: "f5exTHSBFvc",
     thumbnail: "https://i3.ytimg.com/vi/f5exTHSBFvc/hqdefault.jpg",
     glimpse:
-      "https://i.ytimg.com/an_webp/f5exTHSBFvc/mqdefault_6s.webp?du=3000&sqp=COqChpIG&rs=AOn4CLDbQbrwXCddwytlL_I-fCHV4mBUUw",
+      "https://i.ytimg.com/an_webp/f5exTHSBFvc/mqdefault_6s.webp?du=3000&sqp=CL-7h5IG&rs=AOn4CLDrOpNbEG9iJIWGzfQPp4zU05nDxA",
     title: "Turnt Fashion Film",
     description:
       "Monochrome Dreams - a fashion film for the fourth chapter of the alternative fashion magazine TURNT.",
@@ -22,7 +22,7 @@ export const videos = [
     _id: "f5exTHSBFvc",
     thumbnail: "https://i3.ytimg.com/vi/f5exTHSBFvc/hqdefault.jpg",
     glimpse:
-      "https://i.ytimg.com/an_webp/f5exTHSBFvc/mqdefault_6s.webp?du=3000&sqp=COqChpIG&rs=AOn4CLDbQbrwXCddwytlL_I-fCHV4mBUUw",
+      "https://i.ytimg.com/an_webp/f5exTHSBFvc/mqdefault_6s.webp?du=3000&sqp=CL-7h5IG&rs=AOn4CLDrOpNbEG9iJIWGzfQPp4zU05nDxA",
     title: "Turnt Fashion Film",
     description:
       "Monochrome Dreams - a fashion film for the fourth chapter of the alternative fashion magazine TURNT.",
@@ -36,7 +36,7 @@ export const videos = [
     _id: "f5exTHSBFvc",
     thumbnail: "https://i3.ytimg.com/vi/f5exTHSBFvc/hqdefault.jpg",
     glimpse:
-      "https://i.ytimg.com/an_webp/f5exTHSBFvc/mqdefault_6s.webp?du=3000&sqp=COqChpIG&rs=AOn4CLDbQbrwXCddwytlL_I-fCHV4mBUUw",
+      "https://i.ytimg.com/an_webp/f5exTHSBFvc/mqdefault_6s.webp?du=3000&sqp=CL-7h5IG&rs=AOn4CLDrOpNbEG9iJIWGzfQPp4zU05nDxA",
     title: "Turnt Fashion Film",
     description:
       "Monochrome Dreams - a fashion film for the fourth chapter of the alternative fashion magazine TURNT.",
