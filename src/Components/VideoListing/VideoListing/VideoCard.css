@@ -1,0 +1,51 @@
+.card-video{
+    /* border-radius: 0; */
+    height: 25rem;
+    max-width: 17rem;
+    background-color: var(--transparent-black);
+    position: relative;
+}
+
+.card-vertical .card__img{
+    background-color: var(--black);
+    height: 13rem;
+    width: 100%;
+    cursor: pointer;
+    position: relative;
+}
+
+.card-video>*{
+    margin: 0;
+}
+
+.card-video p{
+    font-size: 0.7rem;
+    /* color: var(--color-secondary); */
+    color: var(--ccc);
+}
+
+.card__body span{
+    font-size: 0.9rem;
+    color: var(--ccc);
+}
+
+.card-top-right{
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0.5rem;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.card-top-right > i{
+    margin-right: 0.8rem;
+}
+
+.card-top-right > i:hover{
+    color: var(--color-primary);
+}
+
+.card-vertical .btn i{
+    margin-right: 0.8rem;
+}
