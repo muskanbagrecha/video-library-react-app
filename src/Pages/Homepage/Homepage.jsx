@@ -27,7 +27,6 @@ export const Homepage = () => {
       <div className="mainvideo-container">
         <Video
           src={`1c2-yWp-9pk`}
-          // src="../../Assets/Video/main-video.mp4"
           className="homepage-video"
           autoplay="autoplay"
           loop="loop"

@@ -1,7 +1,9 @@
 import { NavLink } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useFetch } from "../../../CustomHooks";
+import { VerticalNavigationItem } from "./VerticalNavigationItem";
 import "./VerticalNavigation.css";
+
 const VerticalNavigation = ({ verticalNavOpen }) => {
   const navClasses = verticalNavOpen ? " vertical-navigation--active" : "";
 
@@ -23,36 +25,46 @@ const VerticalNavigation = ({ verticalNavOpen }) => {
     : null;
 
   return (
+    //routes will be added in next PR
+
     <aside className={`vertical-navigation ${navClasses}`}>
       <ul className="menu no-list-style">
-        <li className="menu-item">
-          <i className="fa-solid fa-house"></i>
-          <NavLink to="/">
-            Home
-          </NavLink>
-        </li>
-        <li className="menu-item">
-          <i className="fa-solid fa-compass"></i> <span>Explore</span>
-        </li>
+        <VerticalNavigationItem
+          item="Home"
+          iconClass="fa-solid fa-house"
+          path="/"
+        />
+        <VerticalNavigationItem
+          item="Explore"
+          iconClass="fa-solid fa-compass"
+          path="/"
+        />
       </ul>
 
       <hr />
 
       <ul className="menu no-list-style">
-        <li className="menu-item">
-          <i className="fa-solid fa-list"></i>
-          <span>Library</span>
-        </li>
-        <li className="menu-item">
-          <i className="fa-solid fa-clock-rotate-left"></i>
-          <span>History</span>
-        </li>
-        <li className="menu-item">
-          <i className="fa-regular fa-clock"></i> <span>Watch Later</span>
-        </li>
-        <li className="menu-item">
-          <i className="fa-regular fa-thumbs-up"></i> <span>Liked Videos</span>
-        </li>
+        <VerticalNavigationItem
+          item="Library"
+          iconClass="fa-solid fa-list"
+          path="/"
+        />
+
+        <VerticalNavigationItem
+          item="History"
+          iconClass="fa-solid fa-clock-rotate-left" 
+          path="/"
+        />
+        <VerticalNavigationItem
+          item="Watch Later"
+          iconClass="fa-regular fa-clock"
+          path="/"
+        />
+        <VerticalNavigationItem
+          item="Liked Videos"
+          iconClass="fa-regular fa-thumbs-up"
+          path="/"
+        />
       </ul>
 
       <hr />

@@ -7,14 +7,12 @@ export const VideoDropdown = () => {
       <ul className="menu no-list-style">
         <li className="menu-item">
           <i>
-            {/* <AddToPlaylist /> */}
             <i class="fa-solid fa-list"></i>
           </i>
           Save to Playlist
         </li>
         <li className="menu-item">
           <i>
-            {/* <WatchLater /> */}
             <i className="fa-regular fa-clock"></i>
           </i>
           Watch Later

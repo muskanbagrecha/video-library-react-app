@@ -1,3 +1,4 @@
+import { SocialItem } from "./SocialItem";
 import "./Footer.css";
 
 const Footer = () => {
@@ -8,26 +9,22 @@ const Footer = () => {
         Bagrecha
       </p>
       <ul className="footer__list">
-        <li>
-          <a href="https://www.linkedin.com/in/muskan-bagrecha-82bbb8176">
-            <i className="fa fa-linkedin" aria-hidden="true"></i>
-          </a>
-        </li>
-        <li>
-          <a href="https://twitter.com/HoejackBorseman">
-            <i className="fa fa-twitter" aria-hidden="true"></i>
-          </a>
-        </li>
-        <li>
-          <a href="https://github.com/muskanbagrecha">
-            <i className="fa fa-github" aria-hidden="true"></i>
-          </a>
-        </li>
-        <li>
-          <a href="https://www.instagram.com/hoejackborsemaan">
-            <i className="fa fa-instagram" aria-hidden="true"></i>
-          </a>
-        </li>
+        <SocialItem
+          path="https://www.linkedin.com/in/muskan-bagrecha-82bbb8176"
+          iconClass="fa fa-linkedin"
+        />
+        <SocialItem
+          path="https://twitter.com/HoejackBorseman"
+          iconClass="fa fa-twitter"
+        />
+        <SocialItem
+          path="https://github.com/muskanbagrecha"
+          iconClass="fa fa-github"
+        />
+        <SocialItem
+          path="https://www.instagram.com/hoejackborsemaan"
+          iconClass="fa fa-instagram"
+        />
       </ul>
       <p className="copyright">© Fashgram'22</p>
     </footer>

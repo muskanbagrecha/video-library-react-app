@@ -37,5 +37,3 @@ export const Navigation = ({ verticalNavOpen, setVerticalNavOpen }) => {
   );
 };
 
-//https://www.youtube.com/watch?v=uFgcSjVRJhE
-//https://www.youtube.com/watch?v=1c2-yWp-9pk

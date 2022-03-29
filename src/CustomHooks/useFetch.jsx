@@ -5,7 +5,6 @@ export const useFetch = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-//   console.log("Data", data)
   const serverCall = async (params) => {
     setLoading(true);
     setError(null);

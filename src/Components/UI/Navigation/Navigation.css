@@ -1,6 +1,6 @@
 .navigation{
     border-bottom: 3px solid var(--nav-color);
-    background-color: rgba(0,0,0,0.5);
+    background-color: var(--transparent-black);
     backdrop-filter: blur(5px);
 }
 

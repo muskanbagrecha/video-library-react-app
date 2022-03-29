@@ -2,12 +2,12 @@
     /* border-radius: 0; */
     height: 25rem;
     max-width: 17rem;
-    background-color: rgba(0,0,0,0.5);
+    background-color: var(--transparent-black);
     position: relative;
 }
 
 .card-vertical .card__img{
-    background-color: black;
+    background-color: var(--black);
     height: 13rem;
     width: 100%;
     cursor: pointer;
@@ -21,12 +21,12 @@
 .card-video p{
     font-size: 0.7rem;
     /* color: var(--color-secondary); */
-    color: #ccc;
+    color: var(--ccc);
 }
 
 .card__body span{
     font-size: 0.9rem;
-    color: #ccc;
+    color: var(--ccc);
 }
 
 .card-top-right{
