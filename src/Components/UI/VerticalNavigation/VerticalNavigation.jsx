@@ -10,7 +10,7 @@ const VerticalNavigation = ({ verticalNavOpen }) => {
   const { data, serverCall: fetchCategories } = useFetch();
 
   useEffect(() => {
-    fetchCategories({ method: "get", url: "/api/categories" });
+    fetchCategories({ method: "get", url: "/api/videos" });
   }, []);
 
   const categoriesEl = data.categories
@@ -37,7 +37,7 @@ const VerticalNavigation = ({ verticalNavOpen }) => {
         <VerticalNavigationItem
           item="Explore"
           iconClass="fa-solid fa-compass"
-          path="/"
+          path="/explore"
         />
       </ul>
 
