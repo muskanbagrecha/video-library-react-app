@@ -29,7 +29,7 @@ export const videos = [
     description:
       "Monochrome Dreams - a fashion film for the fourth chapter of the alternative fashion magazine TURNT.",
     creator: "Vivi & Tamas",
-    category: "Fashion Film",
+    category: "Skincare",
     views: "1.2M",
     label: "Must Watch",
     date: "April, 2020",

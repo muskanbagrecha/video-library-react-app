@@ -37,7 +37,7 @@ footer{
 .styled-title {
     text-align: center;
     margin: 4rem auto 2rem;
-    line-height: 1.5;
+    line-height: 1.35;
     position: relative;
     padding-bottom: 10px;
     font-family: var(--ff-serif);
@@ -85,7 +85,7 @@ footer{
     border: 2px solid var(--ccc);
 }
 
-.btn.btn-chip:hover{
+.btn.btn-chip:hover, .btn-chip--active{
     background: var(--transparent-primary);
 }
 

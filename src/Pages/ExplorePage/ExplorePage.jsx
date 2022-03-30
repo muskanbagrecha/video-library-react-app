@@ -1,38 +1,46 @@
 import { ExploreFilter } from "./ExploreFilter";
 import { useFilter, useFetch } from "../../CustomHooks/";
 import { useEffect, useState } from "react";
-import { VideoCard } from "../../Components/VideoListing/VideoListing/VideoCard";
+import { VideoCard } from "../../Components/VideoListing/";
 export const ExplorePage = () => {
   const { filterState, filterDispatch } = useFilter();
-  const { data : resData, serverCall: fetchVideos } = useFetch();
-  const [initialData, setInitialData] = useState([]);
+  const { data, serverCall: fetchVideos } = useFetch();
 
   useEffect(() => {
-    console.log("IN effect", resData);
-    resData
-      ? // ? filterDispatch({ type: "SET_ITEMS", payload: data.videos })
-        setInitialData(resData.videos)
-      : fetchVideos({ method: "GET", url: "/api/videos" });
-  }, [resData]);
-
-  useEffect(() => {},[
-
-  ])
-
-  console.log("data...",resData)
+    if (data !== null) {
+      filterDispatch({ type: "SET_ITEMS", payload: data.videos });
+    } else {
+      fetchVideos({ method: "GET", url: "/api/videos" });
+    }
+  }, [data]);
 
   const filterByCategories = () => {
-    const { categories, items } = filterState;
-    console.log(filterState);
-    if (categories.includes("All")) {
+    const { selectedCategory, items } = filterState;
+    if (selectedCategory === "All") {
       return items;
     }
     return items.filter((item) => {
-      categories.includes(item.category);
+      return item.category !== selectedCategory;
     });
   };
 
   const filteredData = filterByCategories();
+  console.log(filteredData);
+  const cards = filteredData.map((item) => {
+    return (
+      <VideoCard
+        key={item._id}
+        thumbnail={item.thumbnail}
+        title={item.title}
+        creator={item.creator}
+        views={item.views}
+        date={item.date}
+        label={item.label}
+        glimpse={item.glimpse}
+      />
+    );
+  });
+  console.log(cards);
 
   return (
     <div className="sub-container">
@@ -40,11 +48,7 @@ export const ExplorePage = () => {
       <div className="row-container">
         <ExploreFilter />
       </div>
-      <div className="row-container">
-        {filteredData?.map((item) => {
-          <VideoCard {...item} />;
-        })}
-      </div>
+      <div className="row-container">{cards}</div>
     </div>
   );
 };

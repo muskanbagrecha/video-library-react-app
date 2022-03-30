@@ -2,14 +2,14 @@ import { createContext, useReducer } from "react";
 import { filterReducer } from "../Reducer/filterReducer";
 
 const FilterContext = createContext({
-  categories: ["All"],
+  selectedCategory: "All",
   items: [],
 });
 
 const FilterProvider = ({ children }) => {
 
   const [filterState, filterDispatch] = useReducer(filterReducer, {
-    categories: ["All"],
+    selectedCategory: "All",
     items: [],
     initialState: [],
   });

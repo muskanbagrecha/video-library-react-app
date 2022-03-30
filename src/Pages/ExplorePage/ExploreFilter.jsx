@@ -1,12 +1,28 @@
-import { useFetch, useFilter } from "../../CustomHooks";
-import { useEffect } from "react";
+import { useFilter } from "../../CustomHooks";
+import { useEffect, useState } from "react";
+import axios from "axios";
 export const ExploreFilter = () => {
-  const { data, serverCall: fetchCategories } = useFetch();
+  // const { data, serverCall: fetchCategories } = useFetch();
 
-  const { filterDispatch } = useFilter();
+  const [data, setData] = useState([]);
+  const { filterState, filterDispatch } = useFilter();
+
+  // useEffect(() => {
+  //   fetchCategories({ method: "get", url: "/api/categories" });
+  // }, []);
 
   useEffect(() => {
-    fetchCategories({ method: "get", url: "/api/categories" });
+    (async () => {
+      try {
+        const res = await axios.get("/api/categories");
+        if (res.status === 200 || res.status === 201) {
+          console.log("effexct", res.data.categories);
+          setData(res.data);
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    })();
   }, []);
 
   const chips =
@@ -16,18 +32,26 @@ export const ExploreFilter = () => {
         categoryName: "All",
       },
       ...data.categories,
-    ].map((category) => {
+    ].map(({ categoryName }) => {
       return (
         <div
-          className="btn btn-chip"
-          key={category.categoryName}
+          className={
+            "btn btn-chip" +
+            (filterState.selectedCategory === categoryName
+              ? " btn-chip--active"
+              : "")
+          }
+          key={categoryName}
           onClick={() => {
-            category !== "All"
-              ? filterDispatch({ type: "SET_CATEGORY", payload: category })
+            categoryName !== "All"
+              ? filterDispatch({
+                  type: "SET_CATEGORY",
+                  payload: categoryName,
+                })
               : filterDispatch({ type: "RESET_CATEGORY" });
           }}
         >
-          {category.categoryName}
+          {categoryName}
         </div>
       );
     });
