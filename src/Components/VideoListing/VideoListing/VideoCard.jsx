@@ -21,7 +21,7 @@ export const VideoCard = ({
         onMouseEnter={() => setShowDropdown(true)}
         onMouseLeave={() => setShowDropdown(false)}
       >
-        <i class="fa-solid fa-ellipsis-vertical"></i>
+        <i className="fa-solid fa-ellipsis-vertical"></i>
         {showDropdown && <VideoDropdown />}
       </div>
       <div
@@ -31,9 +31,16 @@ export const VideoCard = ({
       >
         <img src={cardHover} alt={title} className="img-responsive" />
       </div>
-      <div className="card__content">
+      <div
+        className="card__content"
+        onClick={() => {
+          console.log("clicked");
+        }}
+      >
         <div className="card__header">
-          <h4 className="card__title">{title}</h4>
+          <h4 className="card__title" title={title}>
+            {title}
+          </h4>
         </div>
         <div className="card__body">
           <p>By {creator}</p>
@@ -42,7 +49,7 @@ export const VideoCard = ({
         </div>
         <div className="card__CTA">
           <button className="btn btn-primary btn-full-width">
-            <i class="fa-solid fa-play"></i>
+            <i className="fa-solid fa-play"></i>
             Watch Now
           </button>
         </div>

@@ -37,7 +37,7 @@ footer{
 .styled-title {
     text-align: center;
     margin: 4rem auto 2rem;
-    line-height: 1.35;
+    line-height: 1.5;
     position: relative;
     padding-bottom: 10px;
     font-family: var(--ff-serif);
@@ -61,12 +61,16 @@ footer{
     border-radius: 0;
 }
 
-.row-container {
+.row-container, .card-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     margin: 0 auto;
     width: 80%;
+}
+
+.card-container{
+    /* justify-content: start; */
 }
 
 .flex-center{
@@ -87,6 +91,7 @@ footer{
 
 .btn.btn-chip:hover, .btn-chip--active{
     background: var(--transparent-primary);
+    border: 2px solid var(--color-primary);
 }
 
 .btn:hover{

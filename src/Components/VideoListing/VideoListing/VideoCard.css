@@ -6,6 +6,15 @@
     position: relative;
 }
 
+.card-video h4{
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 1.25rem;
+}
+
 .card-vertical .card__img{
     background-color: var(--black);
     height: 13rem;

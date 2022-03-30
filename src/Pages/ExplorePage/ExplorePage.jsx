@@ -1,10 +1,10 @@
 import { ExploreFilter } from "./ExploreFilter";
 import { useFilter, useFetch } from "../../CustomHooks/";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { VideoCard } from "../../Components/VideoListing/";
 export const ExplorePage = () => {
   const { filterState, filterDispatch } = useFilter();
-  const { data, serverCall: fetchVideos } = useFetch();
+  const { data, loader, serverCall: fetchVideos } = useFetch();
 
   useEffect(() => {
     if (data !== null) {
@@ -20,7 +20,7 @@ export const ExplorePage = () => {
       return items;
     }
     return items.filter((item) => {
-      return item.category !== selectedCategory;
+      return item.category === selectedCategory;
     });
   };
 
@@ -45,10 +45,11 @@ export const ExplorePage = () => {
   return (
     <div className="sub-container">
       <h1 className="styled-title">All Videos</h1>
+      {/* {loader && <div className="loader"></div>} */}
       <div className="row-container">
         <ExploreFilter />
       </div>
-      <div className="row-container">{cards}</div>
+      <div className="card-container">{cards}</div>
     </div>
   );
 };
