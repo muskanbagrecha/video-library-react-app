@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import { ModalProvider } from "./Context/modalContext.jsx";
+import { FilterProvider } from "./Context/filterContext.jsx";
 import "./index.css";
 import { App } from "./App";
 import { makeServer } from "./server";
@@ -13,7 +14,9 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <ModalProvider>
-        <App />
+        <FilterProvider>
+          <App />
+        </FilterProvider>
       </ModalProvider>
     </BrowserRouter>
   </React.StrictMode>,

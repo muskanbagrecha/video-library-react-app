@@ -79,6 +79,16 @@ footer{
     border-radius: 2px;
 }
 
+.btn-chip{
+    border-radius: 5px;
+    margin: 5px 1rem;
+    border: 2px solid var(--ccc);
+}
+
+.btn.btn-chip:hover{
+    background: var(--transparent-primary);
+}
+
 .btn:hover{
 background-color: transparent;
 border: 2px solid var(--color-primary);

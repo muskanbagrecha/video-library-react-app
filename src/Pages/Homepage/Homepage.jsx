@@ -15,7 +15,7 @@ export const Homepage = () => {
       console.log("Setting");
       setLoader(false);
       console.log(loader);
-    }, 1000);
+    }, 500);
   }, []);
 
   return loader ? (
