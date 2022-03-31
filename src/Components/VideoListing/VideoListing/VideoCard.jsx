@@ -1,5 +1,6 @@
 import { Card } from "../../UI/";
 import { useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import { VideoDropdown } from "./VideoDropdown";
 import "./VideoCard.css";
 export const VideoCard = ({
@@ -9,11 +10,10 @@ export const VideoCard = ({
   creator,
   views,
   date,
-  label,
 }) => {
   const [cardHover, setCardHover] = useState(thumbnail);
   const [showDropdown, setShowDropdown] = useState(false);
-
+  const navigate = useNavigate();
   return (
     <Card className="card-vertical card-video">
       <div
