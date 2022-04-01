@@ -1,12 +1,18 @@
 .login__container, .signup__container{
     width: 100%;
-    height: 100%;
-    height: 32rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 1rem 0 2rem;
+    margin: 3rem 0;
+}
+
+.login__container{
+    height: 32rem;
+}
+
+.signup__container{
+    height: 40rem;
 }
 
 .login__container h3, .signup__container h3{
@@ -25,7 +31,6 @@
     flex-direction: column;
     justify-content: center;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border: none;
     padding: 2rem;
     border: 2px solid var(--color-primary);
 }
@@ -68,8 +73,8 @@
     flex-direction: column;
     justify-content: center;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border: none;
     padding: 2rem;
+    border: 2px solid var(--color-primary);
 }
 .error-message{
     text-align: center;
