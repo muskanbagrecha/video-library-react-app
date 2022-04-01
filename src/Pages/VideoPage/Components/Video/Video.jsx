@@ -1,5 +1,5 @@
 import "./Video.css";
-const Video = (props) => {
+export const Video = (props) => {
   const classes = props.class
     ? props.class + " video-responsive"
     : "video-responsive";
@@ -24,4 +24,3 @@ const Video = (props) => {
     </div>
   );
 };
-export { Video };

@@ -1,4 +1,4 @@
-import { Video } from "../../Components/VideoListing";
+import { Video } from "./Components/";
 export const VideoPage = ({ video }) => {
   const { thumbnail, title, creator, views, date } = video;
   return (

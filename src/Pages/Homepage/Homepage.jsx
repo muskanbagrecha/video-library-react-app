@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-import { Banner } from "../../Components/Homepage";
-import { Video } from "../../Components/VideoListing/";
-import { CategorySection } from "../../Components/Homepage";
+import { Banner, CategorySection } from "./Components/";
+import { Video } from "../VideoPage/Components/";
 import { useFetch, useFilter } from "../../CustomHooks/";
-import { VideoList } from "../../Components/VideoListing/VideoListing/VideoList";
+import { VideoList } from "../VideoPage/Components/VideoListing/VideoList.jsx";
 import { homepageVideo } from "../../Assets/Video";
 import "./Homepage.css";
 import spinner from "../../Assets/spinner.svg";

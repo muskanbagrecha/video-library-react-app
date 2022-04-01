@@ -1,4 +1,4 @@
-const CategoryItem = ({ title, src }) => {
+export const CategoryItem = ({ title, src }) => {
   return (
     <div className="category-item">
       <div
@@ -13,4 +13,3 @@ const CategoryItem = ({ title, src }) => {
   );
 };
 
-export default CategoryItem;
