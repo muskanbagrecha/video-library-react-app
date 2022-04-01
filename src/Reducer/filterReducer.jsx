@@ -8,9 +8,11 @@ export const filterReducer = (state, action) => {
         initialState: action.payload,
       };
     case "SET_CATEGORY":
-      console.log(action.payload)
+      console.log(action.payload);
       return { ...state, selectedCategory: action.payload };
     case "RESET_CATEGORY":
       return { ...state, selectedCategory: "All", items: state.initialState };
+    default:
+      return state;
   }
 };

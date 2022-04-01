@@ -1,8 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
-import { ModalProvider } from "./Context/modalContext.jsx";
-import { FilterProvider } from "./Context/filterContext.jsx";
+import { AppProvider } from "./Provider/AppProvider";
 import "./index.css";
 import { App } from "./App";
 import { makeServer } from "./server";
@@ -13,11 +12,9 @@ makeServer();
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <ModalProvider>
-        <FilterProvider>
-          <App />
-        </FilterProvider>
-      </ModalProvider>
+      <AppProvider>
+        <App />
+      </AppProvider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")

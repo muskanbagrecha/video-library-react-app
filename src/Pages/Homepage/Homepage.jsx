@@ -1,20 +1,19 @@
 import { useEffect, useState } from "react";
 import { Banner, CategorySection } from "./Components/";
 import { Video } from "../VideoPage/Components/";
-import { useFetch, useFilter } from "../../CustomHooks/";
-import { VideoList } from "../VideoPage/Components/VideoListing/VideoList.jsx";
+import { useFetch, useFilter, useAlert } from "../../CustomHooks/";
+import { VideoList } from "../VideoPage/Components/VideoListing/VideoList";
+import { Alert } from "../../Components/UI";
 import { homepageVideo } from "../../Assets/Video";
 import "./Homepage.css";
 import spinner from "../../Assets/spinner.svg";
 
 export const Homepage = () => {
   const [loader, setLoader] = useState(true);
-
+  const { showAlert } = useAlert();
   useEffect(() => {
     setTimeout(() => {
-      console.log("Setting");
       setLoader(false);
-      console.log(loader);
     }, 500);
   }, []);
 
@@ -38,6 +37,7 @@ export const Homepage = () => {
     </div>
   ) : (
     <div className="sub-container">
+      {showAlert.showAlert && <Alert />}
       <div className="mainvideo-container">
         <Video
           src={`1c2-yWp-9pk`}

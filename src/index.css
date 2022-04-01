@@ -96,6 +96,15 @@ footer{
 
 .btn:hover{
 background-color: transparent;
-border: 2px solid var(--color-primary);
+border: 1px solid var(--color-primary);
 box-shadow: none;
+}
+
+.btn-outline:hover{
+    color: var(--color-complementary);
+    background-color: var(--color-primary);
+}
+
+.btn-link-text{
+    padding: 10px 0;
 }

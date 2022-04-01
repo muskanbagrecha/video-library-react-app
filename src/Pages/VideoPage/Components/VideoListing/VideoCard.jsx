@@ -5,7 +5,7 @@ import { VideoDropdown } from "./VideoDropdown";
 import "./VideoCard.css";
 
 export const VideoCard = ({ item }) => {
-  const { id, thumbnail, title, creator, views, date, label, glimpse } = item;
+  const { _id, thumbnail, title, creator, views, date, label, glimpse } = item;
   const [cardHover, setCardHover] = useState(thumbnail);
   const [showDropdown, setShowDropdown] = useState(false);
   const navigate = useNavigate();
