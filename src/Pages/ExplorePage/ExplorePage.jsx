@@ -1,44 +1,35 @@
 import { ExploreFilter } from "./ExploreFilter";
 import { useFilter, useFetch } from "../../CustomHooks/";
 import { useEffect } from "react";
-import { VideoCard } from "../../Components/VideoListing/";
+import { VideoCard } from "../VideoPage/Components/VideoListing/VideoCard.jsx";
 export const ExplorePage = () => {
   const { filterState, filterDispatch } = useFilter();
-  const { data, loader, serverCall: fetchVideos } = useFetch();
+  const {
+    data: videoData,
+    loader: videoLoader,
+    serverCall: fetchVideos,
+  } = useFetch();
 
   useEffect(() => {
-    if (data !== null) {
-      filterDispatch({ type: "SET_ITEMS", payload: data.videos });
+    if (videoData !== null) {
+      filterDispatch({ type: "SET_ITEMS", payload: videoData.videos });
     } else {
       fetchVideos({ method: "GET", url: "/api/videos" });
     }
-  }, [data]);
+  }, [videoData]);
 
   const filterByCategories = () => {
     const { selectedCategory, items } = filterState;
     if (selectedCategory === "All") {
       return items;
     }
-    return items.filter((item) => {
-      return item.category === selectedCategory;
-    });
+    return items.filter((item) => item.category === selectedCategory);
   };
 
   const filteredData = filterByCategories();
   console.log(filteredData);
   const cards = filteredData.map((item) => {
-    return (
-      <VideoCard
-        key={item._id}
-        thumbnail={item.thumbnail}
-        title={item.title}
-        creator={item.creator}
-        views={item.views}
-        date={item.date}
-        label={item.label}
-        glimpse={item.glimpse}
-      />
-    );
+    return <VideoCard key={item._id} item={item} />;
   });
   console.log(cards);
 

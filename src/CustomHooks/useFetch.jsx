@@ -6,11 +6,10 @@ export const useFetch = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const serverCall = async (params) => {
-    setLoading(true);
-    setError(null);
     try {
+      setLoading(true);
+      setError(null);
       const res = await axios.request(params);
-      console.log("usefetch", res);
       setData(res?.data);
     } catch (error) {
       setError(error);

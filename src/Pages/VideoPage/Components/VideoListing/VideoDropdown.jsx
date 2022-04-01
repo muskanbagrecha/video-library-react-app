@@ -1,4 +1,3 @@
-import { AddToPlaylist, WatchLater } from "../../../Assets/Icons/Icons";
 import "./VideoDropdown.css";
 
 export const VideoDropdown = () => {

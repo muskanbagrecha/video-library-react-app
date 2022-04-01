@@ -1,9 +1,9 @@
 import { useEffect } from "react";
-import { useFetch } from "../../../CustomHooks";
-import CategoryItem from "./CategoryItem";
-import spinner from "../../../Assets/spinner.svg";
+import { useFetch } from "../../../../CustomHooks";
+import { CategoryItem } from "./CategoryItem";
+import spinner from "../../../../Assets/spinner.svg";
 import "./CategorySection.css";
-const CategorySection = () => {
+export const CategorySection = () => {
   const { data, loading, error, serverCall: fetchCategories } = useFetch();
 
   useEffect(() => {
@@ -33,5 +33,3 @@ const CategorySection = () => {
     </section>
   );
 };
-
-export default CategorySection;
