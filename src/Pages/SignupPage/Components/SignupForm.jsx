@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth, useModal, useAlert } from "../../../CustomHooks/";
-import { Alert } from "../../../Components/UI/";
 import axios from "axios";
 
 const Signupform = () => {
@@ -118,6 +117,10 @@ const Signupform = () => {
           alertMessage: "Account created successfully!",
           type: "success",
         });
+        if (pathname === "/signup") {
+          navigate(-2);
+        }
+        // setShowModal(false);
       }
     } catch (err) {
       console.log(err);
@@ -129,26 +132,8 @@ const Signupform = () => {
       }
     }
   };
-
-  useEffect(() => {
-    setTimeout(() => {
-      setShowAlert({
-        showAlert: false,
-        message: null,
-        type: null,
-      });
-      if (authState.isAuthenticated) {
-        if (pathname === "/signup") {
-          navigate("/");
-        }
-        setShowModal(false);
-      }
-    }, 2000);
-  }, [showAlert.showAlert]);
-
   return (
     <main className="signup__container">
-      {showAlert.showAlert && <Alert />}
       <form className="input-form" autoComplete="on" onSubmit={submitHandler}>
         <h3>Signup</h3>
         <label className="label" htmlFor="first-name">

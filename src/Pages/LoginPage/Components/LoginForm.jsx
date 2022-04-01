@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useModal, useAuth, useAlert, useFetch } from "../../../CustomHooks/";
-import { Alert } from "../../../Components/UI/";
 import axios from "axios";
 
 export const LoginForm = (props) => {
@@ -53,6 +52,10 @@ export const LoginForm = (props) => {
           alertMessage: "Logged in successfully!",
           type: "success",
         });
+        if (pathname === "/login") {
+          navigate(-1);
+          //         setShowModal(false);
+        }
       }
     } catch (err) {
       console.log(err);
@@ -74,27 +77,10 @@ export const LoginForm = (props) => {
     });
   };
 
-  useEffect(() => {
-    setTimeout(() => {
-      if (authState.isAuthenticated) {
-        if (pathname === "/login") {
-          navigate("/");
-          setShowAlert({
-            setShowAlert: false,
-            alertMessage: null,
-            type: null,
-          });
-        }
-        setShowModal(false);
-      }
-    }, 2000);
-  }, [showAlert.showAlert]);
-
   const loginClasses = "login__container " + props.classes;
 
   return (
     <main className={loginClasses}>
-      {showAlert.showAlert && <Alert />}
       <form
         className="input-form"
         autoComplete="on"

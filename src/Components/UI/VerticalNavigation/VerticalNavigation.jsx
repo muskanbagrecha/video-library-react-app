@@ -9,7 +9,7 @@ const VerticalNavigation = ({ verticalNavOpen }) => {
   const navClasses = verticalNavOpen ? " vertical-navigation--active" : "";
   const navigate = useNavigate();
   const [categories, setCategories] = useState([]);
-  const { setShowAlert } = useAlert;
+  const { setShowAlert } = useAlert();
   const {
     authState: { isAuthenticated, user },
     logout,
@@ -18,7 +18,7 @@ const VerticalNavigation = ({ verticalNavOpen }) => {
   const logoutHandler = () => {
     logout();
     setShowAlert({
-      setShowAlert: true,
+      showAlert: true,
       alertMessage: "Logged out!",
       type: "info",
     });

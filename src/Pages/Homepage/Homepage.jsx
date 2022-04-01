@@ -37,7 +37,7 @@ export const Homepage = () => {
     </div>
   ) : (
     <div className="sub-container">
-      {showAlert.showAlert && <Alert />}
+      {/* {showAlert.showAlert && <Alert />} */}
       <div className="mainvideo-container">
         <Video
           src={`1c2-yWp-9pk`}
