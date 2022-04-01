@@ -61,12 +61,16 @@ footer{
     border-radius: 0;
 }
 
-.row-container {
+.row-container, .card-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     margin: 0 auto;
     width: 80%;
+}
+
+.card-container{
+    /* justify-content: start; */
 }
 
 .flex-center{
@@ -77,6 +81,17 @@ footer{
 
 .btn{
     border-radius: 2px;
+}
+
+.btn-chip{
+    border-radius: 5px;
+    margin: 5px 1rem;
+    border: 2px solid var(--ccc);
+}
+
+.btn.btn-chip:hover, .btn-chip--active{
+    background: var(--transparent-primary);
+    border: 2px solid var(--color-primary);
 }
 
 .btn:hover{

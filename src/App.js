@@ -12,8 +12,8 @@ export const App = () => {
         verticalNavOpen={verticalNavOpen}
       />
       <VerticalNavigation verticalNavOpen={verticalNavOpen} />
-      <Footer />
       <AppRouter />
+      <Footer />
     </div>
   );
 };

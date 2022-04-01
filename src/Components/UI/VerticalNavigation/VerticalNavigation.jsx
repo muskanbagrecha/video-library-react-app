@@ -1,20 +1,36 @@
 import { NavLink } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useFetch } from "../../../CustomHooks";
+import axios from "axios";
 import { VerticalNavigationItem } from "./VerticalNavigationItem";
 import "./VerticalNavigation.css";
 
 const VerticalNavigation = ({ verticalNavOpen }) => {
   const navClasses = verticalNavOpen ? " vertical-navigation--active" : "";
 
-  const { data, serverCall: fetchCategories } = useFetch();
+  // const { data, serverCall: fetchCategories } = useFetch();
+
+  const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    fetchCategories({ method: "get", url: "/api/categories" });
+    (async () => {
+      try {
+        const res = await axios.get("/api/categories");
+        if (res.status === 200 || res.status === 201) {
+          setCategories(res.data.categories);
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    })();
   }, []);
 
-  const categoriesEl = data.categories
-    ? data.categories.map((category) => {
+  // useEffect(() => {
+  //   fetchCategories({ method: "get", url: "/api/videos" });
+  // }, []);
+
+  const categoriesEl = categories
+    ? categories.map((category) => {
         return (
           <li className="menu-item" key={category._id}>
             <i className="fa-solid fa-play"></i>
@@ -37,7 +53,7 @@ const VerticalNavigation = ({ verticalNavOpen }) => {
         <VerticalNavigationItem
           item="Explore"
           iconClass="fa-solid fa-compass"
-          path="/"
+          path="/explore"
         />
       </ul>
 
@@ -52,7 +68,7 @@ const VerticalNavigation = ({ verticalNavOpen }) => {
 
         <VerticalNavigationItem
           item="History"
-          iconClass="fa-solid fa-clock-rotate-left" 
+          iconClass="fa-solid fa-clock-rotate-left"
           path="/"
         />
         <VerticalNavigationItem

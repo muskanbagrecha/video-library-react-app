@@ -1,7 +1,6 @@
 import { VideoCard } from "./VideoCard";
-import { videos } from "./../../../backend/db/videos";
 
-export const VideoList = () => {
+export const VideoList = ({videos}) => {
   return (
     <section className="row-container">
       {videos.map(

@@ -1,12 +1,15 @@
 import { v4 as uuid } from "uuid";
-
+import { creator1, creator2 } from "../../Assets/Images";
 export const creators = [
   {
     id: uuid(),
     name: "Vivi & Tamas",
-    imageUrl:
-      "https://yt3.ggpht.com/ytc/AKedOLTa5jC7igLmvrXnFQ0wpowPW9V210i8X4_O9cXf=s48-c-k-c0x00ffffff-no-rj",
+    imageUrl: creator1,
     subscribers: "27K",
   },
-  {},
+  {
+    id: uuid(),
+    name: "Chanel",
+    imageUrl: creator2,
+  },
 ];

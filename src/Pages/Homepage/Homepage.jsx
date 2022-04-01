@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Banner } from "../../Components/Homepage";
 import { Video } from "../../Components/VideoListing/";
 import { CategorySection } from "../../Components/Homepage";
+import { useFetch, useFilter } from "../../CustomHooks/";
 import { VideoList } from "../../Components/VideoListing/VideoListing/VideoList";
 import { homepageVideo } from "../../Assets/Video";
 import "./Homepage.css";
@@ -15,8 +16,22 @@ export const Homepage = () => {
       console.log("Setting");
       setLoader(false);
       console.log(loader);
-    }, 1000);
+    }, 500);
   }, []);
+
+  const { data, serverCall: fetchVideos } = useFetch();
+  const { filterState, filterDispatch } = useFilter();
+  useEffect(() => {
+    if (data !== null) {
+      filterDispatch({ type: "SET_ITEMS", payload: data.videos });
+    } else {
+      fetchVideos({ method: "GET", url: "/api/videos" });
+    }
+  }, [data]);
+
+  const getLandingVideos = () => {
+    return filterState.items.filter((item) => item.showOnLanding);
+  };
 
   return loader ? (
     <div className="sub-container flex-center">
@@ -36,7 +51,7 @@ export const Homepage = () => {
       <h1 className="styled-title">Featured Categories</h1>
       <CategorySection />
       <h1 className="styled-title">Most Watched Videos</h1>
-      <VideoList />
+      <VideoList videos={getLandingVideos()} />
     </div>
   );
 };
