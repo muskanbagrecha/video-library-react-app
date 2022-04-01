@@ -4,7 +4,6 @@ import { useModal } from "../../CustomHooks/";
 
 export const LoginModal = () => {
   const { setShowModal } = useModal();
-  const { showAlert, setShowAlert } = useAlert();
 
   const onReset = () => {
     setShowModal(false);

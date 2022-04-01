@@ -1,14 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { useModal, useAuth, useAlert, useFetch } from "../../../CustomHooks/";
+import { useModal, useAuth, useAlert } from "../../../CustomHooks/";
 import axios from "axios";
 
 export const LoginForm = (props) => {
   let navigate = useNavigate();
-  const { authState, authDispatch } = useAuth();
+  const { authDispatch } = useAuth();
   const { setShowModal } = useModal();
   const { pathname } = useLocation();
-  const { showAlert, setShowAlert } = useAlert();
+  const { setShowAlert } = useAlert();
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [loginDetails, setLoginDetails] = useState({
