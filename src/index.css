@@ -89,10 +89,6 @@ footer {
     width: 90%;
 }
 
-.card-container {
-    /* justify-content: start; */
-}
-
 .flex-center {
     display: flex;
     justify-content: center;

@@ -27,11 +27,10 @@ export const VideoPage = () => {
   } = useFetch();
 
   useEffect(() => {
-    if (currentVideoResponse === null) {
-      fetchCurrentVideo({ method: "get", url: `/api/video/${videoURLId}` });
-      console.log(error);
-    }
-    if (currentVideoResponse?.video._id !== videoURLId) {
+    if (
+      currentVideoResponse === null ||
+      currentVideoResponse?.video._id !== videoURLId
+    ) {
       fetchCurrentVideo({ method: "get", url: `/api/video/${videoURLId}` });
       console.log(error);
     }
@@ -96,7 +95,7 @@ export const VideoPage = () => {
         </section>
         {showDescription && (
           <section className="video-description-text">
-            {currentVideoResponse?.video.description ?? ""}
+            <p>{currentVideoResponse?.video.description ?? ""}</p>
           </section>
         )}
         <button
