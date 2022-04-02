@@ -3,29 +3,28 @@ import { Banner, CategorySection } from "./Components/";
 import { Video } from "../VideoPage/Components/";
 import { useFetch, useFilter, useAlert } from "../../CustomHooks/";
 import { VideoList } from "../VideoPage/Components/VideoListing/VideoList";
-import { Alert } from "../../Components/UI";
 import { homepageVideo } from "../../Assets/Video";
 import "./Homepage.css";
 import spinner from "../../Assets/spinner.svg";
 
 export const Homepage = () => {
   const [loader, setLoader] = useState(true);
-  const { showAlert } = useAlert();
+  
   useEffect(() => {
     setTimeout(() => {
       setLoader(false);
     }, 500);
   }, []);
 
-  const { data, serverCall: fetchVideos } = useFetch();
+  const { data : videoData, serverCall: fetchVideos } = useFetch();
   const { filterState, filterDispatch } = useFilter();
   useEffect(() => {
-    if (data !== null) {
-      filterDispatch({ type: "SET_ITEMS", payload: data.videos });
+    if (videoData !== null) {
+      filterDispatch({ type: "SET_ITEMS", payload: videoData.videos });
     } else {
       fetchVideos({ method: "GET", url: "/api/videos" });
     }
-  }, [data]);
+  }, [videoData]);
 
   const getLandingVideos = () => {
     return filterState.items.filter((item) => item.showOnLanding);
@@ -37,7 +36,6 @@ export const Homepage = () => {
     </div>
   ) : (
     <div className="sub-container">
-      {/* {showAlert.showAlert && <Alert />} */}
       <div className="mainvideo-container">
         <Video
           src={`1c2-yWp-9pk`}

@@ -1,7 +1,6 @@
 export const filterReducer = (state, action) => {
   switch (action.type) {
     case "SET_ITEMS":
-      console.log("from reducer", action.payload);
       return {
         ...state,
         items: action.payload,

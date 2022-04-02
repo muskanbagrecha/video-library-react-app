@@ -68,7 +68,7 @@ const VerticalNavigation = ({ verticalNavOpen }) => {
         <VerticalNavigationItem
           item="Explore"
           iconClass="fa-solid fa-compass"
-          path="/explore"
+          path="/videos"
         />
       </ul>
 

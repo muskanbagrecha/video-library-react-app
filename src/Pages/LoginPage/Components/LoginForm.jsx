@@ -119,7 +119,7 @@ export const LoginForm = (props) => {
             {!showPassword ? (
               <i className="fa-solid fa-eye" aria-hidden="true"></i>
             ) : (
-              <i class="fa-solid fa-eye-slash" aria-hidden="true"></i>
+              <i className="fa-solid fa-eye-slash" aria-hidden="true"></i>
             )}
           </span>
         </div>

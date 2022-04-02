@@ -6,7 +6,7 @@ import {
   Alert,
 } from "./Components/UI/";
 import { useState, useEffect } from "react";
-import { useAlert } from "./CustomHooks";
+import { useAlert } from "./CustomHooks/";
 export const App = () => {
   const [verticalNavOpen, setVerticalNavOpen] = useState(false);
   const { showAlert, setShowAlert } = useAlert();
