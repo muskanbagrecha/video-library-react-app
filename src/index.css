@@ -7,6 +7,7 @@
     --transparent-black: rgba(0,0,0,0.5);
     --transparent-primary: rgba(145, 128, 196,0.5);
     --box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    --container-box-shadow: 0 2px 8px rgba(0,0,0,0.25);
     --ccc: #ccc;
     --black: #000;
 }
@@ -81,6 +82,7 @@ footer{
 
 .btn{
     border-radius: 2px;
+    border: 1px solid var(--color-primary);
 }
 
 .btn-chip{
@@ -96,6 +98,21 @@ footer{
 
 .btn:hover{
 background-color: transparent;
-border: 2px solid var(--color-primary);
+border: 1px solid var(--color-primary);
 box-shadow: none;
+}
+
+.btn-outline:hover{
+    color: var(--color-complementary);
+    background-color: var(--color-primary);
+}
+
+.btn-link-text{
+    padding: 10px 0;
+}
+
+/* CL modifications to make */
+
+.input-form input{
+    border: 2px solid var(--ccc);
 }

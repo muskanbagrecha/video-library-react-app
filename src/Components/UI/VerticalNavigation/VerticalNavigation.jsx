@@ -1,16 +1,28 @@
-import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { useFetch } from "../../../CustomHooks";
 import axios from "axios";
 import { VerticalNavigationItem } from "./VerticalNavigationItem";
+import { useAuth, useAlert } from "../../../CustomHooks";
 import "./VerticalNavigation.css";
 
 const VerticalNavigation = ({ verticalNavOpen }) => {
   const navClasses = verticalNavOpen ? " vertical-navigation--active" : "";
-
-  // const { data, serverCall: fetchCategories } = useFetch();
-
+  const navigate = useNavigate();
   const [categories, setCategories] = useState([]);
+  const { setShowAlert } = useAlert();
+  const {
+    authState: { isAuthenticated, user },
+    logout,
+  } = useAuth();
+
+  const logoutHandler = () => {
+    logout();
+    setShowAlert({
+      showAlert: true,
+      alertMessage: "Logged out!",
+      type: "info",
+    });
+  };
 
   useEffect(() => {
     (async () => {
@@ -24,10 +36,6 @@ const VerticalNavigation = ({ verticalNavOpen }) => {
       }
     })();
   }, []);
-
-  // useEffect(() => {
-  //   fetchCategories({ method: "get", url: "/api/videos" });
-  // }, []);
 
   const categoriesEl = categories
     ? categories.map((category) => {
@@ -44,6 +52,13 @@ const VerticalNavigation = ({ verticalNavOpen }) => {
     //routes will be added in next PR
 
     <aside className={`vertical-navigation ${navClasses}`}>
+      {isAuthenticated && (
+        <div>
+          <span className="highlight">
+            {`Hi, ${user.firstName} ${user.lastName}`}
+          </span>
+        </div>
+      )}
       <ul className="menu no-list-style">
         <VerticalNavigationItem
           item="Home"
@@ -90,8 +105,23 @@ const VerticalNavigation = ({ verticalNavOpen }) => {
       <hr />
 
       <div className="user-info flex-col-center">
-        <p>Log in to like videos and subscribe.</p>
-        <button className="btn btn-primary">Log In</button>
+        {!isAuthenticated ? (
+          <>
+            <p>Log in to like videos and subscribe.</p>
+            <button
+              className="btn btn-primary"
+              onClick={() => {
+                navigate("/login");
+              }}
+            >
+              Log In
+            </button>
+          </>
+        ) : (
+          <button className="btn btn-outline" onClick={logoutHandler}>
+            Logout
+          </button>
+        )}
       </div>
     </aside>
   );

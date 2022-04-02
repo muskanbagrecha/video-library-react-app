@@ -1,4 +1,3 @@
-import { createPortal } from "react-dom";
 import { useModal } from "../../../CustomHooks/useModal";
 import "./Modal.css";
 
@@ -15,14 +14,8 @@ const Modal = ({ modalClass, children }) => {
   const { setShowModal } = useModal();
   return (
     <>
-      {createPortal(
-        <Backdrop onReset={() => setShowModal(false)} />,
-        document.getElementById("backdrop-root")
-      )}
-      {createPortal(
-        <ModalOverlay modalClass={modalClass}>{children}</ModalOverlay>,
-        document.getElementById("modal-root")
-      )}
+      <Backdrop onReset={() => setShowModal(false)} />,
+      <ModalOverlay modalClass={modalClass}>{children}</ModalOverlay>
     </>
   );
 };
