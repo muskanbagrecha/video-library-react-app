@@ -116,7 +116,11 @@ export const LoginForm = (props) => {
             onChange={loginInputHandler}
           />
           <span onClick={() => setShowPassword((prev) => !prev)}>
-            <i className="fa fa-eye" aria-hidden="true"></i>
+            {!showPassword ? (
+              <i className="fa-solid fa-eye" aria-hidden="true"></i>
+            ) : (
+              <i class="fa-solid fa-eye-slash" aria-hidden="true"></i>
+            )}
           </span>
         </div>
 
@@ -129,7 +133,7 @@ export const LoginForm = (props) => {
             Test Credentials
           </button>
         </div>
-        {error && <span className="red error-message">{error}</span>}
+        {error && <p className="red error-message">{error}</p>}
       </form>
     </main>
   );

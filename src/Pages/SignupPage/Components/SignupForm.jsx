@@ -172,7 +172,7 @@ const Signupform = () => {
         />
 
         <label className="label" htmlFor="password">
-          Password
+          Password <span className="red">*</span>
         </label>
         <div>
           <input
@@ -191,12 +191,16 @@ const Signupform = () => {
               showPasswordHandler("password");
             }}
           >
-            <i className="fa fa-eye" aria-hidden="true"></i>
+            {!showPassword.password ? (
+              <i className="fa-solid fa-eye" aria-hidden="true"></i>
+            ) : (
+              <i class="fa-solid fa-eye-slash" aria-hidden="true"></i>
+            )}
           </span>
         </div>
 
         <label className="label" htmlFor="confirm-password">
-          Confirm Password
+          Confirm Password <span className="red">*</span>
         </label>
         <div>
           <input
@@ -215,7 +219,11 @@ const Signupform = () => {
               showPasswordHandler("confirmPassword");
             }}
           >
-            <i className="fa fa-eye" aria-hidden="true"></i>
+            {!showPassword.confirmPassword ? (
+              <i className="fa-solid fa-eye" aria-hidden="true"></i>
+            ) : (
+              <i class="fa-solid fa-eye-slash" aria-hidden="true"></i>
+            )}
           </span>
         </div>
 
@@ -225,9 +233,7 @@ const Signupform = () => {
             Existing user? Login.
           </Link>
         </div>
-        {error.error && (
-          <span className="red error-message">{error.message}</span>
-        )}
+        {error.error && <p className="red error-message">{error.message}</p>}
       </form>
     </main>
   );
