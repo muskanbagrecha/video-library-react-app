@@ -16,7 +16,6 @@ export const ExploreFilter = () => {
       try {
         const res = await axios.get("/api/categories");
         if (res.status === 200 || res.status === 201) {
-          console.log("effexct", res.data.categories);
           setData(res.data);
         }
       } catch (err) {

@@ -21,6 +21,9 @@ import glimpse9 from "./VideoGlimpse/glimpse9.webp";
 
 import creator1 from "./Creators/creator1.webp";
 import creator2 from "./Creators/creator2.webp";
+import creator3 from "./Creators/creator3.webp";
+import creator4 from "./Creators/creator4.webp";
+import creator5 from "./Creators/creator5.webp";
 
 export {
   outfit,
@@ -45,4 +48,7 @@ export {
   glimpse9,
   creator1,
   creator2,
+  creator3,
+  creator4,
+  creator5,
 };

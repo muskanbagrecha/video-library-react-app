@@ -46,7 +46,7 @@ export const videos = [
     title: "CHANEL Fashion Film",
     description:
       "New fashion film for Chanel featuring the brand's, 'Le Paris Russe De Chanel' Fine Jewelry collection. Shot in Paris at Le Grand Palais on RED Digital Cinema camera.",
-    creator: "Vivi & Tamas",
+    creator: "Chanel",
     category: "Fashion Film",
     views: "2M",
     label: "Must Watch",
@@ -100,7 +100,7 @@ export const videos = [
     title: "Zara Women Campaign",
     description:
       "Thank you Lexi Boling, Vitoria Cerreti, Kiki Willems, Leila Goldkhul, Luisiana Gonzales, Yoon Bae and Nora Attal.",
-    creator: "Zara",
+    creator: "Vivi & Tamas",
     views: "3M",
     label: "Featured",
     date: "Dec, 2020",

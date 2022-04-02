@@ -9,7 +9,7 @@ const Banner = () => {
       <button
         className="btn btn-white-no-br"
         onClick={() => {
-          navigate("/explore");
+          navigate("/videos");
         }}
       >
         Explore

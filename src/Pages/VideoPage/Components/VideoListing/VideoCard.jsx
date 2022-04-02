@@ -1,14 +1,21 @@
 import { Card } from "../../../../Components/UI/";
 import { useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { VideoDropdown } from "./VideoDropdown";
 import "./VideoCard.css";
+import { useEffect } from "react";
 
 export const VideoCard = ({ item }) => {
   const { _id, thumbnail, title, creator, views, date, label, glimpse } = item;
   const [cardHover, setCardHover] = useState(thumbnail);
   const [showDropdown, setShowDropdown] = useState(false);
   const navigate = useNavigate();
+
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
   return (
     <Card className="card-vertical card-video">
       <div
@@ -43,7 +50,10 @@ export const VideoCard = ({ item }) => {
           <span>{date}</span>
         </div>
         <div className="card__CTA">
-          <button className="btn btn-primary btn-full-width">
+          <button
+            className="btn btn-primary btn-full-width"
+            onClick={() => navigate(`/videos/${_id}`)}
+          >
             <i className="fa-solid fa-play"></i>
             Watch Now
           </button>

@@ -1,0 +1,135 @@
+.video-page-container {
+    height: 100vh;
+    width: 80%;
+    display: grid;
+    grid-template-columns: 70% 30%;
+    grid-template-areas:
+        "video-container sidebar-container";
+    margin: 0 10%;
+    padding: 1rem;
+}
+
+.video-container {
+    grid-area: video-container;
+    margin: 0 1rem;
+    overflow: scroll
+}
+
+.video-container::-webkit-scrollbar {
+    display: none;
+}
+
+.side-container {
+    grid-area: sidebar-container;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    overflow-y: scroll;
+    overflow-x: auto;
+}
+
+.video-description {
+    margin: 1rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.video-description .large-title {
+    font-size: 2rem;
+    font-weight: var(--fweight-regular);
+}
+
+.video-description-text{
+    font-size: 1.1rem;
+    font-family: 'Roboto', sans-serif;
+}
+
+.video-title {
+    display: inline-block;
+}
+
+.video-CTA {
+    display: flex;
+}
+
+.video-CTA span+span {
+    margin-left: 1.5rem;
+}
+
+.video-CTA span i {
+    margin-right: 0.5rem;
+}
+
+.creator-description{
+    padding: 1rem 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--ccc);
+}
+
+.creator-name{
+    font-size: 1rem;
+}
+
+.creator-subscribers{
+    font-size: 0.8rem;
+}
+
+.side-container::-webkit-scrollbar {
+    display: none;
+}
+
+.side-container>.large-title {
+    font-size: 2rem;
+}
+
+.meta-data{
+    display: flex;
+    align-items: center;
+    margin: 1rem 0;
+    font-size: 1rem;
+    color: var(--ccc);
+    gap: 1rem;
+}
+
+@media screen and (max-width: 1280px) {
+    .video-page-container {
+        height: 100%;
+        grid-template-columns: 100%;
+        grid-template-areas:
+            "video-container"
+            "sidebar-container";
+    }
+
+    .side-container {
+        margin: 2rem 1rem;
+        overflow: auto;
+    }
+}
+
+@media screen and (max-width: 980px) {
+    .video-description {
+        flex-direction: column;
+        align-items: start;
+        gap: 8px;
+    }
+
+}
+
+@media screen and (max-width: 480px) {
+    .video-page-container {
+        margin: 0;
+        width: 100%;
+    }
+
+    .video-description .large-title {
+        font-size: 1.7rem;
+    }
+
+    .video-CTA{
+        font-size: 1.2rem;
+    }
+}

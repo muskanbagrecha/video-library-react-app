@@ -194,7 +194,7 @@ const Signupform = () => {
             {!showPassword.password ? (
               <i className="fa-solid fa-eye" aria-hidden="true"></i>
             ) : (
-              <i class="fa-solid fa-eye-slash" aria-hidden="true"></i>
+              <i className="fa-solid fa-eye-slash" aria-hidden="true"></i>
             )}
           </span>
         </div>
@@ -222,7 +222,7 @@ const Signupform = () => {
             {!showPassword.confirmPassword ? (
               <i className="fa-solid fa-eye" aria-hidden="true"></i>
             ) : (
-              <i class="fa-solid fa-eye-slash" aria-hidden="true"></i>
+              <i className="fa-solid fa-eye-slash" aria-hidden="true"></i>
             )}
           </span>
         </div>

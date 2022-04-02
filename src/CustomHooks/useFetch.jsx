@@ -12,6 +12,7 @@ export const useFetch = () => {
       const res = await axios.request(params);
       setData(res?.data);
     } catch (error) {
+      console.log(error);
       setError(error);
     } finally {
       setLoading(false);
