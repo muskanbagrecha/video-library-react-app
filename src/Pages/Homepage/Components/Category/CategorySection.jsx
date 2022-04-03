@@ -12,7 +12,6 @@ export const CategorySection = () => {
 
   const categoriesEls = data?.categories?.map((category) => {
     return (
-      console.log(category.imageUrl),
       (
         <CategoryItem
           title={category.categoryName}

@@ -32,7 +32,9 @@ export const VideoPage = () => {
       currentVideoResponse?.video._id !== videoURLId
     ) {
       fetchCurrentVideo({ method: "get", url: `/api/video/${videoURLId}` });
-      console.log(error);
+      if (error) {
+        console.log(error);
+      }
     }
   }, [currentVideoResponse, videoURLId]);
 

@@ -84,7 +84,7 @@ const VerticalNavigation = ({ verticalNavOpen }) => {
         <VerticalNavigationItem
           item="History"
           iconClass="fa-solid fa-clock-rotate-left"
-          path="/"
+          path="/history"
         />
         <VerticalNavigationItem
           item="Watch Later"

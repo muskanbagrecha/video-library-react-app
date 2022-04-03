@@ -8,7 +8,7 @@ export const VideoDropdown = () => {
           <i>
             <i className="fa-solid fa-list"></i>
           </i>
-          Save to Playlist
+          Save
         </li>
         <li className="menu-item">
           <i>

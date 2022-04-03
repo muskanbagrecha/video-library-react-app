@@ -146,8 +146,23 @@ button.btn-link-text{
     margin: 0;
 } 
 
+.flex-col-center{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 /* CL modifications to make */
 
 .input-form input {
     border: 2px solid var(--ccc);
+}
+
+.log{
+    width: 7rem;
+}
+
+.margin-top-1rem{
+    margin-top: 1rem;
 }

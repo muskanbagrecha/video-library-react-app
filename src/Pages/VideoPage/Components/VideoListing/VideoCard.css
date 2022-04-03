@@ -51,8 +51,17 @@
     margin-right: 0.8rem;
 }
 
-.card-top-right > i:hover{
+.card-top-right > i:hover, .card-top-left > i:hover{
     color: var(--color-primary);
+}
+
+.card-top-left {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0.5rem;
+    cursor: pointer;
+    z-index: 1;
 }
 
 .card-vertical .btn i{
