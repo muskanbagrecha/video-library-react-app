@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useHistory, useAuth } from "../../CustomHooks";
+import { useHistory, useAuth, useAlert } from "../../CustomHooks";
 import { VideoCard } from "../VideoPage/Components";
 import { useNavigate } from "react-router-dom";
 
@@ -7,16 +7,26 @@ export const HistoryPage = () => {
   const { history, getFromHistory, deleteAllFromHistory } = useHistory();
 
   const {
-    authState: { encodedToken, isAuthenticated },
+    authState: { token, isAuthenticated },
   } = useAuth();
 
   useEffect(() => {
     if (history.length === 0) {
-      getFromHistory({ token: encodedToken });
+      getFromHistory({ token });
     }
   }, [history]);
 
   const navigate = useNavigate();
+  const { setShowAlert } = useAlert();
+
+  const deleteAllFromHistoryHandler = () => {
+    deleteAllFromHistory({ token });
+    setShowAlert({
+      showAlert: true,
+      alertMessage: "All videos have been deleted from history",
+      type: "success",
+    });
+  };
 
   return (
     <div className="sub-container">
@@ -27,11 +37,21 @@ export const HistoryPage = () => {
             <p>You have no videos in your history</p>
           </div>
         ) : (
-          <div className="row-container">
-            {history.map((item) => (
-              <VideoCard key={item._id} item={item} type="HISTORY_CARD" />
-            ))}
-          </div>
+          <>
+            <div className="flex-col-center">
+              <button
+                className="btn btn-outline"
+                onClick={deleteAllFromHistoryHandler}
+              >
+                Clear All
+              </button>
+              <div className="row-container">
+                {history.map((item) => (
+                  <VideoCard key={item._id} item={item} type="HISTORY_CARD" />
+                ))}
+              </div>
+            </div>
+          </>
         )
       ) : (
         <div className="row-container flex-col-center">
