@@ -14,7 +14,6 @@ export const HistoryProvider = ({ children }) => {
     if (historyResponse != null && historyResponse.history) {
       setHistory(historyResponse.history);
     } else if (token) {
-        console.log(token)
       getFromHistory({
         token,
       });

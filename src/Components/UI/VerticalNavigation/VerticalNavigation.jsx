@@ -78,7 +78,7 @@ const VerticalNavigation = ({ verticalNavOpen }) => {
         <VerticalNavigationItem
           item="Library"
           iconClass="fa-solid fa-list"
-          path="/"
+          path="/playlist"
         />
 
         <VerticalNavigationItem

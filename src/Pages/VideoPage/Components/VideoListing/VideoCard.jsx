@@ -39,7 +39,7 @@ export const VideoCard = ({ item }) => {
         onMouseLeave={() => setShowDropdown(false)}
       >
         <i className="fa-solid fa-ellipsis-vertical"></i>
-        {showDropdown && <VideoDropdown />}
+        {showDropdown && <VideoDropdown video={item}/>}
       </div>
       <div
         className="card__img"

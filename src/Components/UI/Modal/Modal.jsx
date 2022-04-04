@@ -1,4 +1,4 @@
-import { useModal } from "../../../CustomHooks/useModal";
+import { usePlaylistModal } from "../../../CustomHooks/usePlaylistModal";
 import "./Modal.css";
 
 const Backdrop = ({ onReset }) => {
@@ -6,18 +6,18 @@ const Backdrop = ({ onReset }) => {
 };
 
 const ModalOverlay = ({ modalClass, children }) => {
-  const classes = "modal " + modalClass;
+  const classes = "modal " + (modalClass ? modalClass : "");
   return <div className={classes}>{children}</div>;
 };
 
 const Modal = ({ modalClass, children }) => {
-  const { setShowModal } = useModal();
+  const { hideModal } = usePlaylistModal();
   return (
     <>
-      <Backdrop onReset={() => setShowModal(false)} />,
+      <Backdrop onReset={() => hideModal()} />,
       <ModalOverlay modalClass={modalClass}>{children}</ModalOverlay>
     </>
   );
 };
 
-export default Modal;
+export { Modal };

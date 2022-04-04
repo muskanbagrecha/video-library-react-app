@@ -4,6 +4,8 @@
     color: var(--color-complementary);
     width: 13rem;
     position: absolute;
+    right: 1rem;
+    border-radius: 4px;
     z-index: 3;
     padding: 1rem;
 }

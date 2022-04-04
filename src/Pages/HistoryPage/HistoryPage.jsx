@@ -24,7 +24,7 @@ export const HistoryPage = () => {
     setShowAlert({
       showAlert: true,
       alertMessage: "All videos have been deleted from history",
-      type: "success",
+      type: "info",
     });
   };
 

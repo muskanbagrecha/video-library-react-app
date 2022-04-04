@@ -4,6 +4,7 @@ import { LoginPage } from "./LoginPage/LoginPage";
 import { SignupPage } from "./SignupPage/SignupPage";
 import { VideoPage } from "./VideoPage/VideoPage";
 import { HistoryPage } from "./HistoryPage/HistoryPage";
+import { PlaylistPage } from "./PlaylistPage/PlaylistPage";
 import { NotFound } from "./NotFound/NotFound";
 
 export {
@@ -13,5 +14,6 @@ export {
   SignupPage,
   VideoPage,
   HistoryPage,
+  PlaylistPage,
   NotFound,
 };

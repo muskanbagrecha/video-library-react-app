@@ -1,0 +1,14 @@
+.playlist-modal{
+    background-color: var(--color-current);
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    color: var(--color-complementary);
+    border: 2px solid var(--color-primary);
+}
+
+.playlist-modal .input-form{
+    border: none;
+}

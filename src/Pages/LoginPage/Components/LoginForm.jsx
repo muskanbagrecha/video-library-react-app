@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { useModal, useAuth, useAlert } from "../../../CustomHooks/";
+import { useAuth, useAlert } from "../../../CustomHooks/";
 import axios from "axios";
 
 export const LoginForm = (props) => {
   let navigate = useNavigate();
   const { authDispatch } = useAuth();
-  const { setShowModal } = useModal();
+  // const { setShowModal } = usePlaylistModal();
   const { pathname } = useLocation();
   const { setShowAlert } = useAlert();
   const [error, setError] = useState("");
@@ -45,7 +45,7 @@ export const LoginForm = (props) => {
           password: "",
         });
         if (pathname === "/products") {
-          setShowModal(false);
+          // setShowModal(false);
         }
         setShowAlert({
           showAlert: true,

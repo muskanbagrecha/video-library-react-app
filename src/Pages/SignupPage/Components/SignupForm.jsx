@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useAuth, useModal, useAlert } from "../../../CustomHooks/";
+import { useAuth, usePlaylistModal, useAlert } from "../../../CustomHooks/";
 import axios from "axios";
 
 const Signupform = () => {
@@ -30,7 +30,7 @@ const Signupform = () => {
     confirmPassword: false,
   });
   const [error, setError] = useState(initialErrorState);
-  const { setShowModal } = useModal();
+  // const { setShowModal } = usePlaylistModal();
   const signupInputChangeHandler = (event) => {
     setSignupDetails({
       ...signupDetails,
