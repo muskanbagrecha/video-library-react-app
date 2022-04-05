@@ -1,6 +1,12 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { useFetch, useFilter, usePlaylistModal, useAuth, useAlert } from "../../CustomHooks";
+import {
+  useFetch,
+  useFilter,
+  usePlaylistModal,
+  useAuth,
+  useAlert,
+} from "../../CustomHooks";
 import { Video, VideoList } from "./Components/";
 import "./VideoPage.css";
 import spinner from "../../Assets/spinner.svg";
@@ -12,12 +18,11 @@ export const VideoPage = () => {
   const { data: allVideoResponse, serverCall: fetchAllVideos } = useFetch();
   const { displayModal } = usePlaylistModal();
   const [showDescription, setShowDescription] = useState(false);
-  const {setShowAlert} = useAlert();
+  const { setShowAlert } = useAlert();
   const navigate = useNavigate();
-  const { authState : {
-    isAuthenticated,
-    token,
-  } } = useAuth();
+  const {
+    authState: { isAuthenticated, token },
+  } = useAuth();
 
   const {
     data: currentVideoResponse,
@@ -25,7 +30,6 @@ export const VideoPage = () => {
     serverCall: fetchCurrentVideo,
     error,
   } = useFetch();
-
 
   useEffect(() => {
     if (allVideoResponse !== null) {
@@ -53,7 +57,8 @@ export const VideoPage = () => {
 
   const saveToPlaylistHandler = () => {
     if (isAuthenticated) {
-      displayModal(currentVideoResponse);
+      console.log(currentVideoResponse.video);
+      displayModal(currentVideoResponse.video);
     } else {
       setShowAlert({
         showAlert: true,

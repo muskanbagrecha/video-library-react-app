@@ -18,8 +18,7 @@
     background-color: var(--color-complementary);
     padding: 1rem;
     box-shadow: var(--box-shadow);
-    z-index: 30;
-    transition: all 0.3s ease-in-out;
+    z-index: 6;
     color: var(--color-current);
     border-radius: var(--bradius-small);
   }
@@ -42,4 +41,10 @@
   
   .modal__content {
     padding: 1rem;
+}
+
+@media screen and (max-width: 580px) {
+  .modal {
+    top: 20%;
+  }
 }

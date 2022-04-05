@@ -83,7 +83,7 @@ export const PlaylistModal = ({ video }) => {
         showAlert: true,
         alertMessage: "Video Added to Playlist Successfully",
         type: "success",
-      })
+      });
     } else if (!event.target.checked) {
       deleteVideoFromPlaylist({
         playlistId: playlists.find(
@@ -96,13 +96,13 @@ export const PlaylistModal = ({ video }) => {
         showAlert: true,
         alertMessage: "Video Removed from Playlist",
         type: "info",
-      })
+      });
     }
   };
 
   const playlistItems = playlists?.map(({ _id, title, videos }) => {
     return (
-      <li key={_id}>
+      <li key={_id} title={title}>
         <label htmlFor={title}>
           <input
             type="checkbox"
@@ -119,10 +119,20 @@ export const PlaylistModal = ({ video }) => {
   return (
     <Modal modalClass="playlist-modal">
       <h3>My Playlists</h3>
-      <div onChange={playlistChangeHandler}>
-        <legend>Pick Playlist</legend>
-        <ul className="no-list-style">{playlistItems}</ul>
-      </div>
+      {playlists?.length > 0 ? (
+        <>
+          <legend>Pick Playlist</legend>
+          <div
+            className="playlist-item-container"
+            onChange={playlistChangeHandler}
+          >
+            <ul className="no-list-style">{playlistItems}</ul>
+          </div>
+        </>
+      ) : (
+        <legend>Create Playlist</legend>
+      )}
+
       <form
         className="input-form flex-col-center"
         onSubmit={createPlaylistHandler}

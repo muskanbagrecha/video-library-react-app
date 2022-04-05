@@ -5,6 +5,7 @@ import { SignupPage } from "./SignupPage/SignupPage";
 import { VideoPage } from "./VideoPage/VideoPage";
 import { HistoryPage } from "./HistoryPage/HistoryPage";
 import { PlaylistPage } from "./PlaylistPage/PlaylistPage";
+import { SinglePlaylistPage } from "./SinglePlaylistPage/SinglePlaylistPage";
 import { NotFound } from "./NotFound/NotFound";
 
 export {
@@ -15,5 +16,6 @@ export {
   VideoPage,
   HistoryPage,
   PlaylistPage,
+  SinglePlaylistPage,
   NotFound,
 };

@@ -2,26 +2,27 @@ import { Card } from "../../../../Components/UI/";
 import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { VideoDropdown } from "./VideoDropdown";
-import { useHistory, useAuth } from "../../../../CustomHooks";
+import { useHistory, useAuth, useAlert } from "../../../../CustomHooks";
 import "./VideoCard.css";
 import { useEffect } from "react";
 
-export const VideoCard = ({ item }) => {
+export const VideoCard = ({ item, type }) => {
   const { _id, thumbnail, title, creator, views, date, label, glimpse } = item;
   const [cardHover, setCardHover] = useState(thumbnail);
   const [showDropdown, setShowDropdown] = useState(false);
+  const {setShowAlert} = useAlert();
 
   const {
     authState: { isAuthenticated, token },
   } = useAuth();
-  const { history, addToHistory } = useHistory();
+  const { history, addToHistory, deleteFromHistory } = useHistory();
   const navigate = useNavigate();
   const { pathname } = useLocation();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
 
-  const videoClickHandler = () => {
+  const viewVideoHandler = () => {
     if (isAuthenticated) {
       const isExistingInHistory = history.some((item) => item._id === _id);
       if (!isExistingInHistory) {
@@ -31,21 +32,38 @@ export const VideoCard = ({ item }) => {
     navigate(`/videos/${_id}`);
   };
 
+  const deleteFromHistoryHandler = () => {
+    deleteFromHistory({ _id, token });
+    setShowAlert({
+      showAlert: true,
+      alertMessage: "Video has been deleted from history",
+      type: "info",
+    })
+  }
+
   return (
-    <Card className="card-vertical card-video">
+    <Card className={`card-vertical card-video card-history`}>
       <div
         className="card-top-right"
         onMouseEnter={() => setShowDropdown(true)}
         onMouseLeave={() => setShowDropdown(false)}
       >
         <i className="fa-solid fa-ellipsis-vertical"></i>
-        {showDropdown && <VideoDropdown video={item}/>}
+        {showDropdown && <VideoDropdown video={item} />}
       </div>
+      {type === "HISTORY_CARD" && (
+        <div
+          className="card-top-left"
+          onClick={deleteFromHistoryHandler}
+        >
+          <i className="fa-solid fa-trash"></i>
+        </div>
+      )}
       <div
         className="card__img"
         onMouseEnter={() => setCardHover(glimpse)}
         onMouseLeave={() => setCardHover(thumbnail)}
-        onClick={videoClickHandler}
+        onClick={viewVideoHandler}
       >
         <img src={cardHover} alt={title} className="img-responsive" />
       </div>
@@ -63,13 +81,12 @@ export const VideoCard = ({ item }) => {
         <div className="card__CTA">
           <button
             className="btn btn-primary btn-full-width"
-            onClick={videoClickHandler}
+            onClick={viewVideoHandler}
           >
             <i className="fa-solid fa-play"></i>
             Watch Now
           </button>
         </div>
-        
       </div>
     </Card>
   );

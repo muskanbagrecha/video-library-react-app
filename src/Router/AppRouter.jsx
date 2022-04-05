@@ -8,6 +8,7 @@ import {
   SignupPage,
   HistoryPage,
   PlaylistPage,
+  SinglePlaylistPage,
   NotFound,
 } from "./../Pages/";
 
@@ -22,6 +23,7 @@ export const AppRouter = () => {
       <Route path="/videos/*" element={<NotFound />} />
       <Route path="/history" element={<HistoryPage />} />
       <Route path="/playlist" element={<PlaylistPage />} />
+      <Route path="/playlist/:id" element={<SinglePlaylistPage />} />
       <Route path="/mockapi" element={<MockmanEs />} />
       <Route path="*" element={<NotFound />} />
     </Routes>

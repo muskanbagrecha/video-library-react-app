@@ -50,13 +50,13 @@ export const PlaylistProvider = ({ children }) => {
     });
   };
 
-  const deletePlaylist = ({playlistId}) => {
+  const deletePlaylist = ({ playlistId, token }) => {
     allPlaylistServerCall({
       method: "delete",
       url: `/api/user/playlists/${playlistId}`,
       headers: { authorization: token },
-    })
-  }
+    });
+  };
 
   const addVideoToPlaylist = ({ playlistId, video, token }) => {
     currPlaylistServerCall({

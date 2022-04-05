@@ -47,6 +47,20 @@
     z-index: 1;
 }
 
+.card-history .card-top-left{
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0.5rem;
+}
+
+.card-history:hover .card-top-left{
+    display: block;
+    cursor: pointer;
+    z-index: 1;
+}
+
 .card-top-right > i{
     margin-right: 0.8rem;
 }

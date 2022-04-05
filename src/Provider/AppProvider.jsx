@@ -7,8 +7,8 @@ import { PlaylistProvider } from "../Context/playlistContext";
 
 export const AppProvider = ({ children }) => {
   return (
-    <AuthProvider>
-      <AlertProvider>
+    <AlertProvider>
+      <AuthProvider>
         <PlaylistModalProvider>
           <HistoryProvider>
             <PlaylistProvider>
@@ -16,7 +16,7 @@ export const AppProvider = ({ children }) => {
             </PlaylistProvider>
           </HistoryProvider>
         </PlaylistModalProvider>
-      </AlertProvider>
-    </AuthProvider>
+      </AuthProvider>
+    </AlertProvider>
   );
 };
