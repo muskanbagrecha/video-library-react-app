@@ -5,3 +5,7 @@
     margin: auto;
     justify-content: center;
 }
+
+.playlist-form{
+    border: none;
+}
