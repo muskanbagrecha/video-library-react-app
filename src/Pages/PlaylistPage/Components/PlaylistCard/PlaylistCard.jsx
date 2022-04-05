@@ -14,7 +14,8 @@ export const PlaylistCard = ({ _id, title }) => {
     navigate("/playlist/" + _id);
   };
 
-  const deletePlaylistHandler = () => {
+  const deletePlaylistHandler = (e) => {
+    e.stopPropagation();
     deletePlaylist({ playlistId: _id, token });
     setShowAlert({
       showAlert: true,
@@ -27,7 +28,7 @@ export const PlaylistCard = ({ _id, title }) => {
   return (
     <div onClick={selectPlaylistHandler}>
       <Card className="playlist-card card-vertical">
-        <div className="card-top-right" onClick={deletePlaylistHandler}>
+        <div className="card-top-right" onClick={(e) => deletePlaylistHandler(e)}>
           <i className="fa-solid fa-trash"></i>
         </div>
         <div className="playlist-info">
