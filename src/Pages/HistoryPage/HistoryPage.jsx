@@ -4,7 +4,8 @@ import { VideoCard } from "../VideoPage/Components";
 import { LoginPromptComponent } from "../../Components/HelperComponents/LoginPromptComponent";
 
 export const HistoryPage = () => {
-  const { history, getFromHistory, deleteAllFromHistory } = useHistory();
+  const { history, getFromHistory, deleteAllFromHistory, deleteFromHistory } =
+    useHistory();
 
   const {
     authState: { token, isAuthenticated },
@@ -27,6 +28,15 @@ export const HistoryPage = () => {
     });
   };
 
+  const deleteFromHistoryHandler = (_id, token) => {
+    deleteFromHistory({ _id, token });
+    setShowAlert({
+      showAlert: true,
+      alertMessage: "Video has been deleted from history",
+      type: "info",
+    });
+  };
+
   return (
     <div className="sub-container">
       <h1 className="styled-title">History</h1>
@@ -45,7 +55,12 @@ export const HistoryPage = () => {
             </button>
             <div className="row-container">
               {history.map((item) => (
-                <VideoCard key={item._id} item={item} type="HISTORY_CARD" />
+                <VideoCard
+                  key={item._id}
+                  item={item}
+                  type="SHOW_TRASH_ICON"
+                  onDelete={deleteFromHistoryHandler}
+                />
               ))}
             </div>
           </div>

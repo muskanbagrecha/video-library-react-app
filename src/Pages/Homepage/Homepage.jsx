@@ -13,7 +13,7 @@ export const Homepage = () => {
   useEffect(() => {
     setTimeout(() => {
       setLoader(false);
-    }, 500);
+    }, 200);
   }, []);
 
   const { data : videoData, serverCall: fetchVideos } = useFetch();

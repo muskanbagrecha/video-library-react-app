@@ -6,11 +6,11 @@ import { useHistory, useAuth, useAlert } from "../../../../CustomHooks";
 import "./VideoCard.css";
 import { useEffect } from "react";
 
-export const VideoCard = ({ item, type }) => {
-  const { _id, thumbnail, title, creator, views, date, label, glimpse } = item;
+export const VideoCard = ({ item, type, onDelete }) => {
+  const { _id, thumbnail, title, creator, views, date, glimpse } = item;
   const [cardHover, setCardHover] = useState(thumbnail);
   const [showDropdown, setShowDropdown] = useState(false);
-  const {setShowAlert} = useAlert();
+  const { setShowAlert } = useAlert();
 
   const {
     authState: { isAuthenticated, token },
@@ -32,15 +32,6 @@ export const VideoCard = ({ item, type }) => {
     navigate(`/videos/${_id}`);
   };
 
-  const deleteFromHistoryHandler = () => {
-    deleteFromHistory({ _id, token });
-    setShowAlert({
-      showAlert: true,
-      alertMessage: "Video has been deleted from history",
-      type: "info",
-    })
-  }
-
   return (
     <Card className={`card-vertical card-video card-history`}>
       <div
@@ -51,11 +42,8 @@ export const VideoCard = ({ item, type }) => {
         <i className="fa-solid fa-ellipsis-vertical"></i>
         {showDropdown && <VideoDropdown video={item} />}
       </div>
-      {type === "HISTORY_CARD" && (
-        <div
-          className="card-top-left"
-          onClick={deleteFromHistoryHandler}
-        >
+      {type === "SHOW_TRASH_ICON" && (
+        <div className="card-top-left" onClick={() => onDelete(_id, token)}>
           <i className="fa-solid fa-trash"></i>
         </div>
       )}
