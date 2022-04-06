@@ -11,7 +11,7 @@ export const PlaylistCard = ({ _id, title }) => {
     authState: { token },
   } = useAuth();
   const selectPlaylistHandler = () => {
-    navigate("/playlist/" + _id);
+    navigate(`/playlist/${_id}`);
   };
 
   const deletePlaylistHandler = (e) => {

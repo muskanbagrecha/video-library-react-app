@@ -3,9 +3,7 @@ import { useFetch } from "../CustomHooks";
 
 export const PlaylistContext = createContext([]);
 
-const token = localStorage.getItem("user")
-  ? JSON.parse(localStorage.getItem("user")).token
-  : null;
+const token = JSON.parse(localStorage.getItem("user"))?.token
 
 export const PlaylistProvider = ({ children }) => {
   const [playlists, setPlaylists] = useState(null);

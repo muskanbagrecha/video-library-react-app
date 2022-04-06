@@ -1,14 +1,11 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 import { useFetch } from "../CustomHooks";
-import { useEffect } from "react";
 export const HistoryContext = createContext([]);
 
 export const HistoryProvider = ({ children }) => {
   const { data: historyResponse, serverCall: historyServerCall } = useFetch();
 
-  const token = localStorage.getItem("user")
-    ? JSON.parse(localStorage.getItem("user")).token
-    : null;
+  const token = JSON.parse(localStorage.getItem("user"))?.token
 
   useEffect(() => {
     if (historyResponse != null && historyResponse.history) {

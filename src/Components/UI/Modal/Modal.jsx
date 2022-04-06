@@ -6,7 +6,7 @@ const Backdrop = ({ onReset }) => {
 };
 
 const ModalOverlay = ({ modalClass, children }) => {
-  const classes = "modal " + (modalClass ? modalClass : "");
+  const classes = `modal ${(modalClass ? modalClass : "")}`;
   return <div className={classes}>{children}</div>;
 };
 
