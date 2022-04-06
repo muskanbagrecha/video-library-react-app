@@ -20,7 +20,7 @@ export const WatchLaterPage = () => {
     <div className="sub-container">
       <h1 className="styled-title">Watch Later</h1>
       {!isAuthenticated ? (
-        <LoginPromptComponent page="Watch Later" />
+        <LoginPromptComponent page="Videos to Watch Later" />
       ) : (
         <div className="row-container">
           {watchLaterVideos.length === 0 ? (
