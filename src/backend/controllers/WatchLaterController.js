@@ -14,8 +14,9 @@ import { requiresAuth } from "../utils/authUtils";
 
 export const getWatchLaterVideosHandler = function (schema, request) {
   const user = requiresAuth.call(this, request);
+  console.log("get", user);
   try {
-    if (!user) {
+    if (!user) { 
       return new Response(
         404,
         {},
@@ -44,8 +45,10 @@ export const getWatchLaterVideosHandler = function (schema, request) {
 
 export const addItemToWatchLaterVideos = function (schema, request) {
   const user = requiresAuth.call(this, request);
+  console.log("post", user);
   if (user) {
     const { video } = JSON.parse(request.requestBody);
+    console.log("post-video", video)
     if (user.watchlater.some((item) => item.id === video.id)) {
       return new Response(
         409,
