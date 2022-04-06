@@ -71,7 +71,6 @@ export const PlaylistProvider = ({ children }) => {
       url: `/api/user/playlists/${playlistId}/${videoId}`,
       headers: { authorization: token },
     });
-    console.log("deleted!");
     console.log(currPlaylistResponse);
   };
   return (

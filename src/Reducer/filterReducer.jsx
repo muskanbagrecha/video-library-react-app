@@ -1,6 +1,6 @@
 export const filterReducer = (state, action) => {
   switch (action.type) {
-    
+
     case "SET_ITEMS":
       return {
         ...state,
@@ -9,7 +9,6 @@ export const filterReducer = (state, action) => {
       };
 
     case "SET_CATEGORY":
-      console.log(action.payload);
       return { ...state, selectedCategory: action.payload };
 
     case "RESET_CATEGORY":
