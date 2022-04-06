@@ -4,7 +4,7 @@ import { CategoryItem } from "./CategoryItem";
 import spinner from "../../../../Assets/spinner.svg";
 import "./CategorySection.css";
 export const CategorySection = () => {
-  const { data, loading, error, serverCall: fetchCategories } = useFetch();
+  const { data, loading, serverCall: fetchCategories } = useFetch();
 
   useEffect(() => {
     fetchCategories({ method: "get", url: "/api/categories" });
@@ -12,14 +12,11 @@ export const CategorySection = () => {
 
   const categoriesEls = data?.categories?.map((category) => {
     return (
-      console.log(category.imageUrl),
-      (
-        <CategoryItem
-          title={category.categoryName}
-          src={category.imageUrl}
-          key={category._id}
-        />
-      )
+      <CategoryItem
+        title={category.categoryName}
+        src={category.imageUrl}
+        key={category._id}
+      />
     );
   });
 
@@ -29,7 +26,6 @@ export const CategorySection = () => {
         <img src={spinner} alt="loading" style={{ margin: "auto" }} />
       ) : null}
       {categoriesEls}
-      {error ? <p className="red">{error}</p> : null}
     </section>
   );
 };

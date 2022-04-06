@@ -1,6 +1,12 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { useFetch, useFilter } from "../../CustomHooks";
+import {
+  useFetch,
+  useFilter,
+  usePlaylistModal,
+  useAuth,
+  useAlert,
+} from "../../CustomHooks";
 import { Video, VideoList } from "./Components/";
 import "./VideoPage.css";
 import spinner from "../../Assets/spinner.svg";
@@ -10,14 +16,13 @@ export const VideoPage = () => {
   const { id: videoURLId } = useParams();
   const { filterState, filterDispatch } = useFilter();
   const { data: allVideoResponse, serverCall: fetchAllVideos } = useFetch();
+  const { displayModal } = usePlaylistModal();
   const [showDescription, setShowDescription] = useState(false);
-  useEffect(() => {
-    if (allVideoResponse !== null) {
-      filterDispatch({ type: "SET_ITEMS", payload: allVideoResponse.videos });
-    } else if (filterState.items.length === 0) {
-      fetchAllVideos({ method: "GET", url: "/api/videos" });
-    }
-  }, [allVideoResponse]);
+  const { setShowAlert } = useAlert();
+  const navigate = useNavigate();
+  const {
+    authState: { isAuthenticated, token },
+  } = useAuth();
 
   const {
     data: currentVideoResponse,
@@ -27,18 +32,42 @@ export const VideoPage = () => {
   } = useFetch();
 
   useEffect(() => {
+    if (allVideoResponse !== null) {
+      filterDispatch({ type: "SET_ITEMS", payload: allVideoResponse.videos });
+    } else if (filterState.items.length === 0) {
+      fetchAllVideos({ method: "GET", url: "/api/videos" });
+    }
+  }, [allVideoResponse]);
+
+  useEffect(() => {
     if (
       currentVideoResponse === null ||
       currentVideoResponse?.video._id !== videoURLId
     ) {
       fetchCurrentVideo({ method: "get", url: `/api/video/${videoURLId}` });
-      console.log(error);
+      if (error) {
+        console.log(error);
+      }
     }
   }, [currentVideoResponse, videoURLId]);
 
   const creatorAccount = creators.find(
     (creator) => creator.name === currentVideoResponse?.video.creator
   );
+
+  const saveToPlaylistHandler = () => {
+    if (isAuthenticated) {
+      console.log(currentVideoResponse.video);
+      displayModal(currentVideoResponse.video);
+    } else {
+      setShowAlert({
+        showAlert: true,
+        alertMessage: "Please Login to View Your Playlist",
+        type: "danger",
+      });
+      navigate("/login");
+    }
+  };
 
   return (
     <div className="sub-container video-page-container">
@@ -65,7 +94,7 @@ export const VideoPage = () => {
               <i className="fa-regular fa-clock"></i>
               Watch Later
             </span>
-            <span className="btn-icon">
+            <span className="btn-icon" onClick={saveToPlaylistHandler}>
               <i className="fa-solid fa-list"></i>
               Save
             </span>

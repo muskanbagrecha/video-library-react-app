@@ -1,0 +1,61 @@
+.playlist-modal {
+    background-color: var(--color-current);
+    z-index: 7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    color: var(--color-complementary);
+    border: 2px solid var(--color-primary);
+}
+
+.playlist-modal .input-form {
+    border: none;
+}
+
+.playlist-modal .input-form input {
+    font-size: 1.2rem;
+    padding: 0.5rem;
+}
+
+.playlist-modal .input-form .btn {
+    margin-top: 1rem;
+}
+
+.playlist-modal legend{
+    font-size: 1.4rem;
+}
+
+.playlist-item-container{
+    border: 2px solid var(--color-primary);
+    border-radius: 5px;
+    width: 16rem;
+    height: 7rem;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.3rem;
+}
+
+/* .playlist-item-container::-webkit-scrollbar {
+    width: 0.5rem;
+} */
+
+.playlist-modal ul{
+    width: 100%;
+    padding: 10px 1rem;
+}
+
+.playlist-modal li{
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical; 
+    overflow: hidden;
+    overflow-wrap: break-word;
+    text-overflow: ellipsis;
+}
+
+.playlist-modal label{
+    cursor: pointer;
+}

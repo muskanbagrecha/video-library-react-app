@@ -85,7 +85,7 @@ export const videos = [
     glimpse: glimpse5,
     title: "GUST Outfit Inspiration",
     description:
-      "Want outfit inspiration this winter? When the temperature dips, it can be a challenge to pull together outfits that look fashionable, without freezing your buns off. But despite the chilly conditions outside, you can still have fun with fashion and look great every day.",
+      "Want outfit inspiration this winter? When the temperature dips, it can be a challenge to pull together outfits that look fashionable, without freezing yourself. But despite the chilly conditions outside, you can still have fun with fashion and look great every day.",
     creator: "Kevin Reyes",
     category: "Outfit Inspo",
     views: "1.2M",
@@ -142,7 +142,7 @@ export const videos = [
     glimpse: glimpse9,
     title: "Kendall's Skincare Routine",
     description:
-      "Watch model Kendall Jenner share her top beauty tips, from the moisturizing mask she makes at home to her multi-step bronzing process.",
+      "Watch model Kendal Jenner share her top beauty tips, from the moisturizing mask she makes at home to her multi-step bronzing process.",
     creator: "Vogue",
     category: "Skincare",
     views: "60K",

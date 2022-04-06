@@ -1,16 +1,12 @@
 import { LoginForm } from "./LoginForm";
 import { Modal } from "../../../Components/UI/";
-import { useModal } from "../../CustomHooks/";
+import { usePlaylistModal } from "../../CustomHooks/";
 
 export const LoginModal = () => {
-  const { setShowModal } = useModal();
-
-  const onReset = () => {
-    setShowModal(false);
-  };
+  const { hideModal } = usePlaylistModal();
   return (
-    <Modal onReset={onReset}>
-      <LoginForm onReset={onReset} classes="login-modal" />
+    <Modal>
+      <LoginForm onReset={hideModal} classes="login-modal" />
     </Modal>
   );
 };

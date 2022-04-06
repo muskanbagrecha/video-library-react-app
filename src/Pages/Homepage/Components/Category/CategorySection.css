@@ -10,9 +10,9 @@
     height: 20rem;
     flex: 1 1 auto;
     display: flex;
-    align-items: end;
+    align-items: flex-end;
     justify-content: center;
-    border: 1px solid #cccccc;
+    border: 1px solid var(--ccc);
     margin: 0 7.5px 1rem;
     overflow: hidden;
 }

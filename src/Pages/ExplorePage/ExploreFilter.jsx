@@ -34,7 +34,7 @@ export const ExploreFilter = () => {
         <div
           className={
             "btn btn-chip" +
-            (filterState.selectedCategory && categoryName
+            (filterState.selectedCategory === categoryName
               ? " btn-chip--active"
               : "")
           }

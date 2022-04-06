@@ -1,18 +1,22 @@
 import { AuthProvider } from "../Context/authContext";
-import { ModalProvider } from "../Context/modalContext";
+import { PlaylistModalProvider } from "../Context/playlistModalContext";
 import { FilterProvider } from "../Context/filterContext";
 import { AlertProvider } from "../Context/alertContext";
+import { HistoryProvider } from "../Context/historyContext";
+import { PlaylistProvider } from "../Context/playlistContext";
 
-export const AppProvider = ({children}) => {
-    return(
-        <AuthProvider>
-            <AlertProvider>
-                <ModalProvider>
-                    <FilterProvider>
-                        {children}
-                    </FilterProvider>
-                </ModalProvider>
-            </AlertProvider>
-        </AuthProvider>
-    )
-}
+export const AppProvider = ({ children }) => {
+  return (
+    <AlertProvider>
+      <AuthProvider>
+        <PlaylistModalProvider>
+          <HistoryProvider>
+            <PlaylistProvider>
+              <FilterProvider>{children}</FilterProvider>
+            </PlaylistProvider>
+          </HistoryProvider>
+        </PlaylistModalProvider>
+      </AuthProvider>
+    </AlertProvider>
+  );
+};

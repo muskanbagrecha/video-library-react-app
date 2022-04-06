@@ -5,12 +5,14 @@ import {
   Footer,
   Alert,
 } from "./Components/UI/";
+import { PlaylistModal } from "./Pages/PlaylistPage/Components/";
 import { useState, useEffect } from "react";
-import { useAlert } from "./CustomHooks/";
+import { useAlert, usePlaylistModal } from "./CustomHooks/";
+
 export const App = () => {
   const [verticalNavOpen, setVerticalNavOpen] = useState(false);
   const { showAlert, setShowAlert } = useAlert();
-
+  const { playlistModal } = usePlaylistModal();
   useEffect(() => {
     setTimeout(() => {
       setShowAlert({
@@ -28,6 +30,9 @@ export const App = () => {
         verticalNavOpen={verticalNavOpen}
       />
       {showAlert.showAlert && <Alert />}
+      {playlistModal.showModal && (
+        <PlaylistModal video={playlistModal.playlistItem} />
+      )}
       <VerticalNavigation verticalNavOpen={verticalNavOpen} />
       <AppRouter />
       <Footer />
