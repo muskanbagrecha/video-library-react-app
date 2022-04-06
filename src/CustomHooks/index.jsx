@@ -5,6 +5,8 @@ import { useAlert } from "./useAlert";
 import { usePlaylistModal } from "./usePlaylistModal";
 import { useHistory } from "./useHistory";
 import { usePlaylist } from "./usePlaylist";
+import { useLikes } from "./useLike";
+import { useWatchLater } from "./useWatchLater";
 
 export {
   useFetch,
@@ -14,4 +16,6 @@ export {
   usePlaylistModal,
   useHistory,
   usePlaylist,
+  useLikes,
+  useWatchLater,
 };

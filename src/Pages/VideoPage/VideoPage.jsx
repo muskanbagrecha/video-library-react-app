@@ -6,6 +6,8 @@ import {
   usePlaylistModal,
   useAuth,
   useAlert,
+  useLikes,
+  useWatchLater,
 } from "../../CustomHooks";
 import { Video, VideoList } from "./Components/";
 import "./VideoPage.css";
@@ -30,6 +32,11 @@ export const VideoPage = () => {
     serverCall: fetchCurrentVideo,
     error,
   } = useFetch();
+
+  const { likedVideos, addVideoToLikes, deleteVideoFromLikes } = useLikes();
+
+  const { watchLaterVideos, addVideoToWatchLater, deleteVideoFromWatchLater } =
+    useWatchLater();
 
   useEffect(() => {
     if (allVideoResponse !== null) {
@@ -57,7 +64,6 @@ export const VideoPage = () => {
 
   const saveToPlaylistHandler = () => {
     if (isAuthenticated) {
-      console.log(currentVideoResponse.video);
       displayModal(currentVideoResponse.video);
     } else {
       setShowAlert({
@@ -67,6 +73,85 @@ export const VideoPage = () => {
       });
       navigate("/login");
     }
+  };
+
+  const currentVideoId = currentVideoResponse?.video._id;
+  const isCurrVideoLiked = likedVideos?.some(
+    (video) => video._id === currentVideoId
+  );
+  const isCurrVideoInWatchLater = watchLaterVideos?.some(
+    (video) => video._id === currentVideoId
+  );
+
+  const likeClickHandler = () => {
+    if (!isAuthenticated) {
+      setShowAlert({
+        showAlert: true,
+        alertMessage: "Please Login to Like Videos",
+        type: "danger",
+      });
+      navigate("/login");
+    }
+    if (isCurrVideoLiked) {
+      removeVideoFromLikesHandler();
+    } else {
+      addVideoToLikesHandler();
+    }
+  };
+
+  const addVideoToLikesHandler = () => {
+    addVideoToLikes({ video: currentVideoResponse.video, token });
+    setShowAlert({
+      showAlert: true,
+      alertMessage: "Video Liked!",
+      type: "success",
+    });
+  };
+
+  const removeVideoFromLikesHandler = () => {
+    deleteVideoFromLikes({ videoId: currentVideoId, token });
+    setShowAlert({
+      showAlert: true,
+      alertMessage: "Video Unliked!",
+      type: "info",
+    });
+  };
+
+  const watchLaterClickHandler = () => {
+    if (!isAuthenticated) {
+      setShowAlert({
+        showAlert: true,
+        alertMessage: "Please Login to Like Videos",
+        type: "danger",
+      });
+      navigate("/login");
+    }
+    if (isCurrVideoInWatchLater) {
+      removeVideoFromWatchLaterHandler();
+    } else {
+      addVideoToWatchLaterHandler();
+    }
+  };
+
+  const addVideoToWatchLaterHandler = () => {
+    addVideoToWatchLater({
+      video: currentVideoResponse.video,
+      token,
+    });
+    setShowAlert({
+      showAlert: true,
+      alertMessage: "Video Added to Watch Later!",
+      type: "success",
+    });
+  };
+
+  const removeVideoFromWatchLaterHandler = () => {
+    deleteVideoFromWatchLater({ videoId: currentVideoId, token });
+    setShowAlert({
+      showAlert: true,
+      alertMessage: "Video Removed from Watch Later!",
+      type: "info",
+    });
   };
 
   return (
@@ -86,12 +171,20 @@ export const VideoPage = () => {
             {currentVideoResponse?.video.title ?? ""}
           </h1>
           <div className="video-CTA">
-            <span className="btn-icon">
-              <i className="fa-regular fa-thumbs-up"></i>
+            <span className="btn-icon" onClick={likeClickHandler}>
+              <i
+                className={`${
+                  isCurrVideoLiked ? "fa-solid" : "fa-regular"
+                } fa-thumbs-up`}
+              ></i>
               Like
             </span>
-            <span className="btn-icon">
-              <i className="fa-regular fa-clock"></i>
+            <span className="btn-icon" onClick={watchLaterClickHandler}>
+              <i
+                className={`${
+                  isCurrVideoInWatchLater ? "fa-solid" : "fa-regular"
+                } fa-clock`}
+              ></i>
               Watch Later
             </span>
             <span className="btn-icon" onClick={saveToPlaylistHandler}>
@@ -125,6 +218,7 @@ export const VideoPage = () => {
         {showDescription && (
           <section className="video-description-text">
             <p>{currentVideoResponse?.video.description ?? ""}</p>
+            <p>Category: {currentVideoResponse?.video.category}</p>
           </section>
         )}
         <button

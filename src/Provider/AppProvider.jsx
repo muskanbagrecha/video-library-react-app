@@ -4,6 +4,8 @@ import { FilterProvider } from "../Context/filterContext";
 import { AlertProvider } from "../Context/alertContext";
 import { HistoryProvider } from "../Context/historyContext";
 import { PlaylistProvider } from "../Context/playlistContext";
+import { LikesProvider } from "../Context/likesContext";
+import { WatchLaterProvider } from "../Context/watchLaterContext";
 
 export const AppProvider = ({ children }) => {
   return (
@@ -12,7 +14,11 @@ export const AppProvider = ({ children }) => {
         <PlaylistModalProvider>
           <HistoryProvider>
             <PlaylistProvider>
-              <FilterProvider>{children}</FilterProvider>
+              <WatchLaterProvider>
+                <LikesProvider>
+                  <FilterProvider>{children}</FilterProvider>
+                </LikesProvider>
+              </WatchLaterProvider>
             </PlaylistProvider>
           </HistoryProvider>
         </PlaylistModalProvider>

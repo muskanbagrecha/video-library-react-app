@@ -9,6 +9,8 @@ import {
   HistoryPage,
   PlaylistPage,
   SinglePlaylistPage,
+  LikesPage,
+  WatchLaterPage,
   NotFound,
 } from "./../Pages/";
 
@@ -20,10 +22,11 @@ export const AppRouter = () => {
       <Route path="/login" element={<LoginPage />} />
       <Route path="/signup" element={<SignupPage />} />
       <Route path="/videos/:id" element={<VideoPage />} />
-      <Route path="/videos/*" element={<NotFound />} />
       <Route path="/history" element={<HistoryPage />} />
       <Route path="/playlist" element={<PlaylistPage />} />
       <Route path="/playlist/:id" element={<SinglePlaylistPage />} />
+      <Route path="/likes" element={<LikesPage />} />
+      <Route path="/watchlater" element={<WatchLaterPage />} />
       <Route path="/mockapi" element={<MockmanEs />} />
       <Route path="*" element={<NotFound />} />
     </Routes>

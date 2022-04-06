@@ -5,4 +5,11 @@ import { Card } from "./Card/Card";
 import { Alert } from "./Alert/Alert";
 import { Modal } from "./Modal/Modal";
 
-export { Alert, Card, Navigation, Footer, VerticalNavigation, Modal };
+export {
+  Alert,
+  Card,
+  Navigation,
+  Footer,
+  VerticalNavigation,
+  Modal,
+};

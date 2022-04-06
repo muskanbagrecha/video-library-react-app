@@ -49,7 +49,6 @@ const VerticalNavigation = ({ verticalNavOpen }) => {
     : null;
 
   return (
-    //routes will be added in next PR
 
     <aside className={`vertical-navigation ${navClasses}`}>
       {isAuthenticated && (
@@ -76,7 +75,7 @@ const VerticalNavigation = ({ verticalNavOpen }) => {
 
       <ul className="menu no-list-style">
         <VerticalNavigationItem
-          item="Library"
+          item="Playlist"
           iconClass="fa-solid fa-list"
           path="/playlist"
         />
@@ -89,20 +88,20 @@ const VerticalNavigation = ({ verticalNavOpen }) => {
         <VerticalNavigationItem
           item="Watch Later"
           iconClass="fa-regular fa-clock"
-          path="/"
+          path="/watchlater"
         />
         <VerticalNavigationItem
           item="Liked Videos"
           iconClass="fa-regular fa-thumbs-up"
-          path="/"
+          path="/likes"
         />
       </ul>
 
       <hr />
 
-      <ul className="menu no-list-style">{categoriesEl}</ul>
+      {/* <ul className="menu no-list-style">{categoriesEl}</ul> */}
 
-      <hr />
+      {/* <hr /> */}
 
       <div className="user-info flex-col-center">
         {!isAuthenticated ? (
