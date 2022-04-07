@@ -109,12 +109,22 @@ export const VideoPage = () => {
   };
 
   const addVideoToLikesHandler = () => {
-    addVideoToLikes({ video: currentVideoResponse.video, token });
-    setShowAlert({
-      showAlert: true,
-      alertMessage: "Video Liked!",
-      type: "success",
-    });
+    if (isAuthenticated) {
+      addVideoToLikes({ video: currentVideoResponse.video, token });
+      setShowAlert({
+        showAlert: true,
+        alertMessage: "Video Liked!",
+        type: "success",
+      });
+    }
+    else{
+      setShowAlert({
+        showAlert: true,
+        alertMessage: "Please Login to Like Videos",
+        type: "danger",
+      });
+      navigate("/login");
+    }
   };
 
   const removeVideoFromLikesHandler = () => {
