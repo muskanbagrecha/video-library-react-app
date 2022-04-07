@@ -10,7 +10,7 @@ export const LikesProvider = ({ children }) => {
   const [likedVideos, setLikedVideos] = useState([]);
 
   useEffect(() => {
-    if (likesResponse != null && likesResponse.likes) {
+    if (likesResponse?.likes) {
       setLikedVideos(likesResponse.likes);
     } else if (token) {
       getAllLikedVideos({

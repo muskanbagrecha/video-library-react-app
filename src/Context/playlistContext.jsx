@@ -21,7 +21,7 @@ export const PlaylistProvider = ({ children }) => {
   }, [allPlaylistResponse]);
 
   useEffect(() => {
-    if (currPlaylistResponse != null && currPlaylistResponse.playlist) {
+    if (currPlaylistResponse?.playlist) {
       const updatedPlaylists = playlists.map((playlist) => {
         return playlist._id === currPlaylistResponse.playlist._id
           ? currPlaylistResponse.playlist

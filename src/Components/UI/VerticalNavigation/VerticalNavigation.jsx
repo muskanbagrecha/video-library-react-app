@@ -8,7 +8,6 @@ import "./VerticalNavigation.css";
 const VerticalNavigation = ({ verticalNavOpen }) => {
   const navClasses = verticalNavOpen ? " vertical-navigation--active" : "";
   const navigate = useNavigate();
-  const [categories, setCategories] = useState([]);
   const { setShowAlert } = useAlert();
   const {
     authState: { isAuthenticated, user },
@@ -24,29 +23,18 @@ const VerticalNavigation = ({ verticalNavOpen }) => {
     });
   };
 
-  useEffect(() => {
-    (async () => {
-      try {
-        const res = await axios.get("/api/categories");
-        if (res.status === 200 || res.status === 201) {
-          setCategories(res.data.categories);
-        }
-      } catch (err) {
-        console.log(err);
-      }
-    })();
-  }, []);
-
-  const categoriesEl = categories
-    ? categories.map((category) => {
-        return (
-          <li className="menu-item" key={category._id}>
-            <i className="fa-solid fa-play"></i>
-            <span>{category.categoryName}</span>
-          </li>
-        );
-      })
-    : null;
+  // useEffect(() => {
+  //   (async () => {
+  //     try {
+  //       const res = await axios.get("/api/categories");
+  //       if (res.status === 200 || res.status === 201) {
+  //         setCategories(res.data.categories);
+  //       }
+  //     } catch (err) {
+  //       console.log(err);
+  //     }
+  //   })();
+  // }, []);
 
   return (
 
@@ -98,10 +86,6 @@ const VerticalNavigation = ({ verticalNavOpen }) => {
       </ul>
 
       <hr />
-
-      {/* <ul className="menu no-list-style">{categoriesEl}</ul> */}
-
-      {/* <hr /> */}
 
       <div className="user-info flex-col-center">
         {!isAuthenticated ? (
