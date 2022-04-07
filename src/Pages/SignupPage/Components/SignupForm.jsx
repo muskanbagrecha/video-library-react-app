@@ -117,6 +117,7 @@ const Signupform = () => {
           alertMessage: "Account created successfully!",
           type: "success",
         });
+        localStorage.setItem("user", JSON.stringify(response.data));
         if (pathname === "/signup") {
           navigate(-2);
         }

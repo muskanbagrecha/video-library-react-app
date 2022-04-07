@@ -1,10 +1,11 @@
 import { useEffect } from "react";
 import { useHistory, useAuth, useAlert } from "../../CustomHooks";
 import { VideoCard } from "../VideoPage/Components";
-import { useNavigate } from "react-router-dom";
+import { LoginPromptComponent } from "../../Components/HelperComponents/LoginPromptComponent";
 
 export const HistoryPage = () => {
-  const { history, getFromHistory, deleteAllFromHistory } = useHistory();
+  const { history, getFromHistory, deleteAllFromHistory, deleteFromHistory } =
+    useHistory();
 
   const {
     authState: { token, isAuthenticated },
@@ -16,7 +17,6 @@ export const HistoryPage = () => {
     }
   }, [history]);
 
-  const navigate = useNavigate();
   const { setShowAlert } = useAlert();
 
   const deleteAllFromHistoryHandler = () => {
@@ -24,6 +24,15 @@ export const HistoryPage = () => {
     setShowAlert({
       showAlert: true,
       alertMessage: "All videos have been deleted from history",
+      type: "info",
+    });
+  };
+
+  const deleteFromHistoryHandler = (_id, token) => {
+    deleteFromHistory({ _id, token });
+    setShowAlert({
+      showAlert: true,
+      alertMessage: "Video has been deleted from history",
       type: "info",
     });
   };
@@ -37,32 +46,27 @@ export const HistoryPage = () => {
             <p>You have no videos in your history</p>
           </div>
         ) : (
-          <>
-            <div className="flex-col-center">
-              <button
-                className="btn btn-outline"
-                onClick={deleteAllFromHistoryHandler}
-              >
-                Clear All
-              </button>
-              <div className="row-container">
-                {history.map((item) => (
-                  <VideoCard key={item._id} item={item} type="HISTORY_CARD" />
-                ))}
-              </div>
+          <div className="flex-col-center">
+            <button
+              className="btn btn-outline"
+              onClick={deleteAllFromHistoryHandler}
+            >
+              Clear All
+            </button>
+            <div className="row-container">
+              {history.map((item) => (
+                <VideoCard
+                  key={item._id}
+                  item={item}
+                  type="SHOW_TRASH_ICON"
+                  onDelete={deleteFromHistoryHandler}
+                />
+              ))}
             </div>
-          </>
+          </div>
         )
       ) : (
-        <div className="row-container flex-col-center">
-          <p>Please Login to View Your History</p>
-          <button
-            className="btn btn-primary margin-top-1rem"
-            onClick={() => navigate("/login")}
-          >
-            Login
-          </button>
-        </div>
+        <LoginPromptComponent page="History" />
       )}
     </div>
   );

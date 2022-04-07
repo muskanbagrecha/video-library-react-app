@@ -10,6 +10,7 @@ const FilterProvider = ({ children }) => {
 
   const [filterState, filterDispatch] = useReducer(filterReducer, {
     selectedCategory: "All",
+    search: "",
     items: [],
     initialState: [],
   });

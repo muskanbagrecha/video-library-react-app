@@ -21,7 +21,7 @@ export const PlaylistProvider = ({ children }) => {
   }, [allPlaylistResponse]);
 
   useEffect(() => {
-    if (currPlaylistResponse != null && currPlaylistResponse.playlist) {
+    if (currPlaylistResponse?.playlist) {
       const updatedPlaylists = playlists.map((playlist) => {
         return playlist._id === currPlaylistResponse.playlist._id
           ? currPlaylistResponse.playlist
@@ -71,7 +71,6 @@ export const PlaylistProvider = ({ children }) => {
       url: `/api/user/playlists/${playlistId}/${videoId}`,
       headers: { authorization: token },
     });
-    console.log("deleted!");
     console.log(currPlaylistResponse);
   };
   return (

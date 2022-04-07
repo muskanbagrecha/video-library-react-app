@@ -41,8 +41,8 @@
 }
 
 .video-description-text{
-    font-size: 1.1rem;
-    font-family: 'Roboto', sans-serif;
+    font-size: 1.3rem;
+    font-family: var(--ff-serif);
 }
 
 .video-title {

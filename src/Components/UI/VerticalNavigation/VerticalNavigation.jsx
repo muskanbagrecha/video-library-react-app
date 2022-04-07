@@ -8,7 +8,6 @@ import "./VerticalNavigation.css";
 const VerticalNavigation = ({ verticalNavOpen }) => {
   const navClasses = verticalNavOpen ? " vertical-navigation--active" : "";
   const navigate = useNavigate();
-  const [categories, setCategories] = useState([]);
   const { setShowAlert } = useAlert();
   const {
     authState: { isAuthenticated, user },
@@ -24,32 +23,20 @@ const VerticalNavigation = ({ verticalNavOpen }) => {
     });
   };
 
-  useEffect(() => {
-    (async () => {
-      try {
-        const res = await axios.get("/api/categories");
-        if (res.status === 200 || res.status === 201) {
-          setCategories(res.data.categories);
-        }
-      } catch (err) {
-        console.log(err);
-      }
-    })();
-  }, []);
-
-  const categoriesEl = categories
-    ? categories.map((category) => {
-        return (
-          <li className="menu-item" key={category._id}>
-            <i className="fa-solid fa-play"></i>
-            <span>{category.categoryName}</span>
-          </li>
-        );
-      })
-    : null;
+  // useEffect(() => {
+  //   (async () => {
+  //     try {
+  //       const res = await axios.get("/api/categories");
+  //       if (res.status === 200 || res.status === 201) {
+  //         setCategories(res.data.categories);
+  //       }
+  //     } catch (err) {
+  //       console.log(err);
+  //     }
+  //   })();
+  // }, []);
 
   return (
-    //routes will be added in next PR
 
     <aside className={`vertical-navigation ${navClasses}`}>
       {isAuthenticated && (
@@ -76,7 +63,7 @@ const VerticalNavigation = ({ verticalNavOpen }) => {
 
       <ul className="menu no-list-style">
         <VerticalNavigationItem
-          item="Library"
+          item="Playlist"
           iconClass="fa-solid fa-list"
           path="/playlist"
         />
@@ -89,18 +76,14 @@ const VerticalNavigation = ({ verticalNavOpen }) => {
         <VerticalNavigationItem
           item="Watch Later"
           iconClass="fa-regular fa-clock"
-          path="/"
+          path="/watchlater"
         />
         <VerticalNavigationItem
           item="Liked Videos"
           iconClass="fa-regular fa-thumbs-up"
-          path="/"
+          path="/likes"
         />
       </ul>
-
-      <hr />
-
-      <ul className="menu no-list-style">{categoriesEl}</ul>
 
       <hr />
 

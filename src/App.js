@@ -13,15 +13,6 @@ export const App = () => {
   const [verticalNavOpen, setVerticalNavOpen] = useState(false);
   const { showAlert, setShowAlert } = useAlert();
   const { playlistModal } = usePlaylistModal();
-  useEffect(() => {
-    setTimeout(() => {
-      setShowAlert({
-        setShowAlert: false,
-        alertMessage: null,
-        type: null,
-      });
-    }, 2000);
-  }, [showAlert.showAlert]);
 
   return (
     <div className="main-container">

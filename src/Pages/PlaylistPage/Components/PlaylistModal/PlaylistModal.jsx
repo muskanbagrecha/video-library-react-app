@@ -29,7 +29,6 @@ export const PlaylistModal = ({ video }) => {
 
   const { setShowAlert } = useAlert();
   useEffect(() => {
-    console.log("effect playlist");
     if (playlists === null) {
       getAllPlaylists({ token });
     }
@@ -69,7 +68,6 @@ export const PlaylistModal = ({ video }) => {
   };
 
   const playlistChangeHandler = (event) => {
-    console.log(event.target.checked);
     if (event.target.checked) {
       const playlistId = playlists.find(
         (playlist) => playlist.title === event.target.name
