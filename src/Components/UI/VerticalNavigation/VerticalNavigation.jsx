@@ -1,8 +1,11 @@
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
-import axios from "axios";
 import { VerticalNavigationItem } from "./VerticalNavigationItem";
-import { useAuth, useAlert } from "../../../CustomHooks";
+import {
+  useAuth,
+  useAlert,
+  useLikes,
+  useWatchLater,
+} from "../../../CustomHooks";
 import "./VerticalNavigation.css";
 
 const VerticalNavigation = ({ verticalNavOpen }) => {
@@ -23,21 +26,7 @@ const VerticalNavigation = ({ verticalNavOpen }) => {
     });
   };
 
-  // useEffect(() => {
-  //   (async () => {
-  //     try {
-  //       const res = await axios.get("/api/categories");
-  //       if (res.status === 200 || res.status === 201) {
-  //         setCategories(res.data.categories);
-  //       }
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   })();
-  // }, []);
-
   return (
-
     <aside className={`vertical-navigation ${navClasses}`}>
       {isAuthenticated && (
         <div>
