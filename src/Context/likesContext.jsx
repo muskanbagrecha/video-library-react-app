@@ -51,6 +51,7 @@ export const LikesProvider = ({ children }) => {
         getAllLikedVideos,
         addVideoToLikes,
         deleteVideoFromLikes,
+        setLikedVideos,
       }}
     >
       {children}
